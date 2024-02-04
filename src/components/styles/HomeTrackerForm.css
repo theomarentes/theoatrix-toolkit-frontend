@@ -60,6 +60,10 @@
     }
   }
 
+  h1 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
  
 .form-container {
   background-color: #f0f0f0;
@@ -96,4 +100,8 @@
 
 .btn-primary:hover {
   background-color: #ff8c00;
+}
+
+.content {
+  line-height:1;
 }

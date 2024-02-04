@@ -1,13 +1,14 @@
 import React from 'react';
 import './styles/HomePage.css'
-import Sidebar from '../components/Sidebar';
 import HomeForm from '../components/HomeForm';
+import HomeNavBoxes from '../components/HomeNavBoxes';
 
 const HomePage = () => {
   return (
-    <Sidebar>
+    <div class="fullscreen-image">
         <HomeForm/>
-      </Sidebar>
+        <HomeNavBoxes/>
+        </div>
   );
 };
 
