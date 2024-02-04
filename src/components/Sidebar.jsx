@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/Sidebar.css'; // Import the CSS file for styles
+import './styles/Sidebar.css'; 
 import Header from './Header';
 
 const Sidebar = ({ children }) => {
@@ -10,21 +10,21 @@ const Sidebar = ({ children }) => {
   return (
     <>
     <Header/>
-    <div className="app-container background-image">
+    <div className="app-container fullscreen-image">
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <nav>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Account Tracker</a></li>
-            <li><a href="#">Calculators</a></li>
-            <li><a href="#">Simulators</a></li>
-            <li><a href="#">Grand Exchange</a></li>
-            <li><a href="#">My Account</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tracker">Account Tracker</a></li>
+            <li><a href="/calculators">Calculators</a></li>
+            <li><a href="/drop-simulator">Simulators</a></li>
+            <li><a href="/grand-exchange">Grand Exchange</a></li>
+            <li><a href="/account">My Account</a></li>
           </ul>
         </nav>
       </div>
-      <div className="content">
-        <button className="sidebar-toggle" onClick={toggleSidebar}>☰</button>
+      <div className="content background-image">
+        <button style={{zIndex:"10001"}}className="sidebar-toggle" onClick={toggleSidebar}>☰</button>
         {children}
       </div>
     </div>
