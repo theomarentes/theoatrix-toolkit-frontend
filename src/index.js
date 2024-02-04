@@ -4,6 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import './styles.css'
+import TrackerPage from './pages/TrackerPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +13,7 @@ root.render(
 
               <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route path="/" element={<HomePage />} />
+                  <Route path="/tracker" element={<TrackerPage />} />
               </Routes>
         </BrowserRouter>
     </React.StrictMode>

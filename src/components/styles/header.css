@@ -1,12 +1,11 @@
 .site-header {
-    background-color: #1c1c1c; /* Dark background for the header */
-    color: #fff; /* White text color */
-    padding: 1rem; /* Padding around the content */
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 1rem;
   }
   
   .site-title {
-    margin: 0; /* Remove default margin */
-    font-size: 1.5rem; /* Adjust font size as needed */
+    margin: 0;
+    font-size: 1.5rem;
   }
 
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');

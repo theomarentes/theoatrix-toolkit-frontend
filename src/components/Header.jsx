@@ -1,9 +1,9 @@
 import React from 'react';
-import './styles/Header.css'; // Assuming you have a CSS file for styles
+import './styles/Header.css'; 
 
 const Header = ({ title = 'Theoatrix Toolkit' }) => {
   return (
-    <header className="site-header">
+    <header style={{ backgroundColor: "#1c1c1c" }}className="site-header">
       <h1 className="site-title">{title}</h1>
     </header>
   );

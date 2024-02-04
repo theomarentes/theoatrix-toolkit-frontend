@@ -9,7 +9,7 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 250px;
+    width: 200px;
     background: #333;
     padding: 1rem;
     transform: translateX(-100%);
@@ -29,7 +29,7 @@
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 1001; /* Ensure it's above other content */
+    z-index: 1001;
   }
   
   @media (min-width: 768px) {
@@ -46,27 +46,27 @@
       margin-left: 00px;
     }
   }
-  /* Remove text underline and add spacing between list items */
+ 
 .sidebar nav ul li {
-  margin-bottom: 2rem; /* Adjust the space between list items */
+  margin-bottom: 2rem;
 }
 
 .sidebar nav ul li a {
-  text-decoration: none; /* Remove underline from links */
-  color: #fff; /* Adjust color as needed */
-  display: block; /* Makes the entire area of the list item clickable */
+  text-decoration: none;
+  color: #fff;
+  display: block;
 }
 
 .sidebar nav ul li a:hover{
-  text-decoration: none; /* Remove underline from links */
-  color: #ffd900; /* Adjust color as needed */
-  display: block; /* Makes the entire area of the list item clickable */
+  text-decoration: none;
+  color: #ffd900;
+  display: block;
 }
 .sidebar nav ul {
-  list-style-type: none; /* Remove bullets */
-  padding-left: 0; /* Remove default padding */
+  list-style-type: none;
+  padding-left: 0;
   font-weight: 600;
-  padding-top:5vh;
+  padding-top:1vh;
   padding-left: 1vw;
 }
 

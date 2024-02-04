@@ -1,12 +1,12 @@
 import React from 'react';
 import './styles/HomeTrackerForm.css'
 
-const TrackerForm = () => {
+const HomeForm = () => {
   return (
       <div className="content text-light">
         <div className="centered-content">
-          <h1 className="display-4 heading-yellow">Account Tracker</h1>
-          <h2 className="lead">Get Useful Insight Into Your OSRS Account</h2>
+          <h1 className="display-4 heading-yellow">Theoatrix Toolkit</h1>
+          <h2 className="lead">Master OldSchool RuneScape</h2>
           <form>
             <div className="input-group mb-3">
               <input
@@ -26,4 +26,4 @@ const TrackerForm = () => {
   );
 };
 
-export default TrackerForm;
+export default HomeForm;
