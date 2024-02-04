@@ -1,0 +1,33 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* For text alignment */
+    min-height: 100vh; /* Make sure it takes minimum full viewport height */
+  }
+  
+  .centered-content {
+    max-width: 600px; /* Adjust based on your content size */
+    margin: auto; /* This centers the content horizontally */
+    padding: 1rem; /* Add some padding */
+  }
+  
+  @media (min-width: 768px) { /* Adjusting for desktop views, considering the sidebar */
+    .content {
+      min-height: calc(100vh - 56px); /* Adjust if your header has different height */
+    }
+  }
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-group .form-control {
+    flex-grow: 1; /* Ensures the input field takes up available space */
+    margin-right: 0.5rem; /* Optional: Adds some space between the input field and the button */
+  }
+  
+  .input-group-append {
+    flex-shrink: 0; /* Prevents the button from shrinking */
+  }
+  

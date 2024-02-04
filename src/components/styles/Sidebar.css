@@ -1,0 +1,75 @@
+.app-container {
+    display: flex;
+    
+    background-color: #4d4d4d;
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background: #333;
+    padding: 1rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 1rem;
+  }
+  
+  .sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001; /* Ensure it's above other content */
+  }
+  
+  @media (min-width: 768px) {
+    .sidebar {
+      position: static;
+      transform: translateX(0);
+    }
+  
+    .sidebar-toggle {
+      display: none;
+    }
+  
+    .content {
+      margin-left: 00px;
+    }
+  }
+  /* Remove text underline and add spacing between list items */
+.sidebar nav ul li {
+  margin-bottom: 2rem; /* Adjust the space between list items */
+}
+
+.sidebar nav ul li a {
+  text-decoration: none; /* Remove underline from links */
+  color: #fff; /* Adjust color as needed */
+  display: block; /* Makes the entire area of the list item clickable */
+}
+
+.sidebar nav ul li a:hover{
+  text-decoration: none; /* Remove underline from links */
+  color: #ffd900; /* Adjust color as needed */
+  display: block; /* Makes the entire area of the list item clickable */
+}
+.sidebar nav ul {
+  list-style-type: none; /* Remove bullets */
+  padding-left: 0; /* Remove default padding */
+  font-weight: 600;
+  padding-top:5vh;
+  padding-left: 1vw;
+}
+
+body {
+  margin: 0
+}

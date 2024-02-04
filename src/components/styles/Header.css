@@ -1,0 +1,11 @@
+.site-header {
+    background-color: #333; /* Dark background for the header */
+    color: #fff; /* White text color */
+    padding: 1rem; /* Padding around the content */
+  }
+  
+  .site-title {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
+  
