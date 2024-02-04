@@ -2,10 +2,19 @@
     background-color: #1c1c1c;
     color: #fff;
     padding: 1rem;
+    text-decoration: none;
   }
   
   .site-title {
     margin: 0;
     font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
   }
 
+  .header-button {
+    background-color: hsla(100,100,100,0);
+    border:none;
+    color: white;
+    background-image: black;
+  }
