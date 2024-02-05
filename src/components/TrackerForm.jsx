@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/HomeTrackerForm.css'
+import './styles/TrackerForm.css'
 
 const TrackerForm = () => {
   return (

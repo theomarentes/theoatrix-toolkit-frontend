@@ -7,7 +7,7 @@
   }
   
   .centered-content {
-    max-width: 600px;
+    max-width: 1500px;
     margin: auto;
     padding: 1rem;
   }
@@ -29,5 +29,16 @@
   
   .input-group-append {
     flex-shrink: 0;
+  }
+  .page-container {
+    width:100%
+  }
+
+
+  @media (min-width: 768px) {
+    .page-container {
+      width:80%;
+      
+    }
   }
   
