@@ -1,10 +1,10 @@
 import React from 'react';
 import './styles/Header.css'; 
 
-const Header = ({ title = 'Theoatrix Toolkit' }) => {
+const Header = ({ title = 'Theoatrix Toolkit', onClick }) => {
   return (
-    <header style={{ backgroundColor: "#1c1c1c" }} className="site-header">
-     <button class="header-button"><h1 className="site-title">{title}</h1></button>
+    <header className="site-header">
+      <a className="site-title" href="/" onClick={onClick}>{title}</a>
     </header>
   );
 };
