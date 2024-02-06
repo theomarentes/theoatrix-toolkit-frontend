@@ -1,70 +1,42 @@
 .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
 }
-  
-  .centered-content {
-    max-width: 600px;
-    margin-top: 20vh;
-    padding: 1rem;
-  }
-  
-  @media (min-width: 768px) {
-    .content {
-      min-height: calc(100vh - 56px);
-    }
-  }
-  .input-group {
-    display: flex;
-    align-items: center;
-  }
-  
-  .input-group .form-control {
-    flex-grow: 1;
-    margin-right: 0.5rem;
-  }
-  
-  .input-group-append {
-    flex-shrink: 0;
-  }
-  
-.heading-yellow {
-    color: #FFD900;
-    line-height: 1;
-    font-size: 2.25rem;
-    transition: font-size 0.3s ease;
-  }
-  
- 
-  @media (min-width: 768px) {
-    .heading-yellow {
-      font-size: 2.75rem;
-    }
-  }
-  
- 
-  @media (min-width: 992px) {
-    .heading-yellow {
-      font-size: 3.25rem;
-    }
-  }
-  
- 
-  @media (min-width: 1200px) {
-    .heading-yellow {
-      font-size: 3.75rem;
-    }
-  }
 
-  h1 {
-    margin-block-start: 0em;
-    margin-block-end: 0em;
+.centered-content {
+  max-width: 600px;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .content {
+    min-height: 75vh;
   }
- 
+}
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group .form-control {
+  flex-grow: 1;
+  margin-right: 0.5rem;
+}
+
+.input-group-append {
+  flex-shrink: 0;
+}
+
+.heading-yellow {
+  color: #FFD900;
+  line-height: 1;
+  font-size: 2.25rem;
+  transition: font-size 0.3s ease;
+}
+
 .form-container {
   background-color: #f0f0f0;
   padding: 20px;
@@ -73,11 +45,9 @@
   margin: auto;
 }
 
-
 .input-group {
   margin-bottom: 1rem;
 }
-
 
 .form-control {
   border: 1px solid #ccc;
@@ -85,7 +55,6 @@
   padding: 10px;
   font-size: 0.8rem;
 }
-
 
 .btn-primary {
   background-color: #FFD900;
