@@ -30,6 +30,7 @@
   .input-group-append {
     flex-shrink: 0;
   }
+
   .page-container {
     width:100%
   }
@@ -42,3 +43,15 @@
     }
   }
   
+  
+  .fullscreen-image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url('../../files/mining-theoatrix.png')
+  }
+
