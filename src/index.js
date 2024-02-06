@@ -5,16 +5,19 @@ import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import './styles.css'
 import TrackerPage from './pages/TrackerPage';
+import { TrackerDataProvider } from './contexts/TrackerProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
         <BrowserRouter>
-
               <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route path="/tracker" element={<TrackerPage />} />
-              </Routes>
+                  
+                      <Route path="/tracker" element={<TrackerPage />} />
+                      <Route path="/tracker/:username" element={<TrackerPage />} />
+                    
+                  </Routes>
         </BrowserRouter>
     </React.StrictMode>
 );
