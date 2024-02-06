@@ -9,12 +9,40 @@
   .box {
     background-color: black;
     height: 70px;
+    border-radius: 8px;
   }
 
   .stats-box {
     background-color: black;
+    border-radius: 8px;
+    padding:0;
+    margin: 0;
   }
   .stats-box p {
+ 
+    padding-left:3%;
+    padding-right:3%;
+  }
+
+  .activities-box {
+    background-color: black;
+    border-radius: 8px;
+    padding:0;
+    margin: 0;
+  }
+  .activities-box p {
+ 
+    padding-left:3%;
+    padding-right:3%;
+  }
+
+  .bossing-box {
+    background-color: black;
+    border-radius: 8px;
+    padding:0;
+    margin: 0;
+  }
+  .bossing-box p {
  
     padding-left:3%;
     padding-right:3%;
@@ -39,14 +67,39 @@
   }
 
 .skill-info {
-    margin-top:30px;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Align items vertically in the center */
+  justify-content: flex-start; /* Align items to the start of the container */
+  gap: 10px; /* Add some space between items */
+  margin-top: 0;
+}
+progress{
+  background:black;
+  border-radius: 8px;
 }
 
 .progress-bar {
     background: black;
     margin: auto;
     width: 100%;
+    border:0;
+    border-radius: 8px;
+}
+
+.skill-icon {
+
+  margin: auto;
+  margin-left:3%;
+  width:20px;
+  height:20px;
+  background-color:rgb(91, 91, 91);
+  border-radius: 2px;
+  padding:3px;
+}
+
+.bossing-metric {
+  flex-grow: 1; /* Allow the text to take up available space */
+    text-align: left; /* Align text to the left */
+    margin: 0; /* Reset any margins */
 }
