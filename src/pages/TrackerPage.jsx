@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './styles/TrackerPage.css'
 import Sidebar from '../components/Sidebar';
 import TrackerForm from '../components/TrackerForm';
