@@ -1,0 +1,36 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #020202;
+    color: white;
+    border-radius: 8px;
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    height: 30px
+  }
+  
+  .box p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+ 
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
