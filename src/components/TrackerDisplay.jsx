@@ -20,12 +20,12 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
             <div class="container">
                 
                 <div class="box">
-                    <img src={require("../files/coins.png")} className="icon" alt="Coins" />
+                    <img src={require("../files/Combat_icon.webp")} className="icon" alt="Coins" />
                     <p>{(trackerData.data.combatLevel)}</p>
                     <p style={{ fontSize: "60%" }}>Combat Level</p>
                 </div>
                 <div class="box">
-                    <img src={require("../files/coins.png")} className="icon" alt="Coins" />
+                    <img src={require("../files/Skills-icon.png")} className="icon" alt="Coins" />
                     <p>{(trackerData.data.latestSnapshot.data.skills.overall.level)}</p>
                     <p style={{ fontSize: "60%" }}>Total Level</p>
                 </div>
