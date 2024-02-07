@@ -46,14 +46,17 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                    return(
                         <div class="skill-info">
                             <img class="skill-icon" alt={element.metric} src={require("../files/skills/"+capitalizeFirstLetter(element.metric)+"_icon.webp")}></img>
-                            <p>{capitalizeFirstLetter(element.metric)}</p>
+                            <p class="skill-name">{capitalizeFirstLetter(element.metric)}</p>
               
                             <progress class="progress-bar" id="file" value={element.experience} max="13034431"> {element.experience/13034431} </progress>
-                            <p>{(element.level)}</p>
+                            <p class="max-level">{(element.level)}</p>
                         </div>
                     )
                 })}
             </div>
+
+
+
             <div class="bossing-box">
                 {console.log(trackerData.data.latestSnapshot.data)}
                 <h3 style={{paddingTop:"20px", marginBottom:"0"}}>Bossing Kills</h3>

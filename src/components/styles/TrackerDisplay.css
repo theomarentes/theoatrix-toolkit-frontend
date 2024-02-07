@@ -18,6 +18,16 @@
     padding:0;
     margin: 0;
   }
+
+  .skill-name{
+    min-width: 100px;
+  }
+
+  .max-level{
+    min-width: 25px;
+  }
+  
+  
   .stats-box p {
  
     padding-left:3%;
