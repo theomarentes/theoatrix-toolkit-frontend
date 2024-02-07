@@ -15,7 +15,7 @@ export function TrackerDataProvider(props){
           setTrackerData(json)
       }
       fetchUser().catch(error => console.log(error));
-      console.log(trackerData)
+
     }, [username])
 
 
