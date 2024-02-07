@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './styles/TrackerDisplay.css';
 
 import { TrackerContext } from '../contexts/TrackerProvider';
@@ -17,7 +17,7 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
 
         return (
             <>
-                <h1>V</h1>
+    
                 <h1>{trackerData.data.displayName}</h1>
                 <div class="container">
 
@@ -32,12 +32,12 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                         <p style={{ fontSize: "60%" }}>Total Level</p>
                     </div>
                     <div class="box">
-                        <img src={require("../files/coins.png")} className="icon" alt="Coins" />
+                        <img src={require("../files/Tangleroot.webp")} className="icon" alt="Coins" />
                         <p>{(Math.round(trackerData.data.ehp))}</p>
                         <p style={{ fontSize: "60%" }}>Skilling Hours</p>
                     </div>
                     <div class="box">
-                        <img src={require("../files/coins.png")} className="icon" alt="Coins" />
+                        <img src={require("../files/Olmlet.webp")} className="icon" alt="Coins" />
                         <p>{Math.round(trackerData.data.ehb)}</p>
                         <p style={{ fontSize: "60%" }}>Bossing Hours</p>
                     </div>
@@ -90,14 +90,14 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                 </div>
             </>
         );
-    } else if (trackerData?.data?.displayName !== "undefined") {
+    } else if (trackerData && trackerData?.data?.displayName !== "undefined" && trackerData?.data?.displayName !== "null") {
         return(
             <>
             <p>Player not found, or data not found</p>
             </>
         )
     } else {
-        return "..."
+        return ""
     }
 };
 

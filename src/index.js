@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import './styles.css'
 import TrackerPage from './pages/TrackerPage';
+import TimeToMaxPage from './pages/TimeToMaxPage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +17,8 @@ root.render(
                   
                       <Route path="/tracker" element={<TrackerPage />} />
                       <Route path="/tracker/:username" element={<TrackerPage />} />
+                      <Route path="/time-to-max/" element={<TimeToMaxPage />} />
+                      <Route path="/time-to-max/:username" element={<TimeToMaxPage />} />
                     
                   </Routes>
         </BrowserRouter>

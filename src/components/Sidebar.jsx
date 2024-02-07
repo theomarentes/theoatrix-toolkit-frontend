@@ -16,7 +16,7 @@ const Sidebar = ({ children }) => {
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/tracker">Account Tracker</a></li>
-            <li><a href="/calculators">Calculators</a></li>
+            <li><a href="/time-to-max">Time To Max</a></li>
             <li><a href="/drop-simulator">Simulators</a></li>
             <li><a href="/grand-exchange">Grand Exchange</a></li>
             <li><a href="/account">My Account</a></li>
