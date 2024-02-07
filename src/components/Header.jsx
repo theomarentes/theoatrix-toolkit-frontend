@@ -8,4 +8,5 @@ const Header = ({ title = 'Theoatrix Toolkit', onClick }) => {
     </header>
   );
 };
+
 export default Header;
