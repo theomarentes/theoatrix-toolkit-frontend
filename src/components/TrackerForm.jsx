@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/HomeTrackerForm.css';
 import './styles/TrackerForm.css';
+import { TrackerContext } from '../contexts/TrackerProvider';
 
 const TrackerForm = () => {
   const [username, setUsername] = useState('');
+  const [ showing, setShowing ] = useState('none');
+  let { trackerData } = useContext(TrackerContext)
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -13,8 +16,21 @@ const TrackerForm = () => {
 
   const handleSearch = (event) => {
     event.preventDefault(); // Prevent the default form submission
+    
     navigate(`/tracker/${username}`);
+
+    if (trackerData.data.username !== username) {
+      setShowing("inline");
+    }
+    
+    
   };
+  useEffect(() => {
+
+      setShowing("none");
+
+  }, [trackerData])
+
 
   return (
     <div className="content text-light">
@@ -34,8 +50,11 @@ const TrackerForm = () => {
               <button className="btn btn-primary" type="submit">
                 Search
               </button>
+              
             </div>
+            
           </div>
+          <img style={{width:"40px", display: showing, animation:"ease-in"}} src={require("../files/loading.gif")} alt="loading..."/>
         </form>
       </div>
     </div>

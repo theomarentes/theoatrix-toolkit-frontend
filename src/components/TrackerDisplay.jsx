@@ -11,7 +11,7 @@ function capitalizeFirstLetter(string) {
 const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     let { trackerData } = useContext(TrackerContext)
 
-    if (trackerData) {
+    if (trackerData && trackerData.data.displayName !== "undefined") {
 
     
     return (
@@ -89,7 +89,7 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
         </>
     );
     }else {
-        return "loading"
+        return ""
     }
 };
 
