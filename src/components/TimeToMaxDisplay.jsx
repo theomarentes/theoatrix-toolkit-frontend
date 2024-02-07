@@ -1,12 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './styles/TrackerDisplay.css';
 
 import { TrackerContext } from '../contexts/TrackerProvider';
 
-function capitalizeFirstLetter(string) {
-    if (!string) return '';
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+
 
 const TimeToMaxDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     let { trackerData } = useContext(TrackerContext)
