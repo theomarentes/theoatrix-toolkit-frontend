@@ -6,6 +6,7 @@ import { TrackerContext } from '../contexts/TrackerProvider';
 
 const TrackerForm = () => {
   const [username, setUsername] = useState('');
+
   const [ showing, setShowing ] = useState('none');
   let { trackerData } = useContext(TrackerContext)
   const navigate = useNavigate();
@@ -18,9 +19,9 @@ const TrackerForm = () => {
     event.preventDefault(); // Prevent the default form submission
     
     navigate(`/tracker/${username}`);
-
-    if (trackerData.data.username !== username) {
+    if (trackerData?.data?.username !== username) {
       setShowing("inline");
+     
     }
     
     
@@ -28,13 +29,14 @@ const TrackerForm = () => {
   useEffect(() => {
 
       setShowing("none");
+      
 
   }, [trackerData])
 
 
   return (
     <div className="content text-light">
-      <div className="centered-content">
+      <div className="centered-content" style={{paddingTop:"20vh"}}>
         <h1 className="display-4 heading-yellow">Account Tracker</h1>
         <h2 className="lead">Get Useful Insight Into Your OSRS Account</h2>
         <form onSubmit={handleSearch}>

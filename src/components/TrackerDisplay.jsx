@@ -17,8 +17,9 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
 
         return (
             <>
-    
+
                 <h1>{trackerData.data.displayName}</h1>
+                <h3>{capitalizeFirstLetter(trackerData.data.type)}</h3>
                 <div class="container">
 
                     <div class="box">
@@ -65,7 +66,7 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                         }
                         return (
                             <div class="skill-info">
-                                <img class="skill-icon" alt={element.metric} src={require("../files/skills/Woodcutting_icon.webp")}></img> {/*"../files/skills/"+capitalizeFirstLetter(element.metric)+"_icon.webp")}></img> */}
+                                <img class="skill-icon" alt={element.metric} src={require("../files/bosses/"+(element.metric)+".png")}></img> 
                                 <p class="bossing-metric">{capitalizeFirstLetter(element.metric).replaceAll("_", " ")}</p>
                                 <p>{(element.kills)} kills</p>
                             </div>
@@ -81,7 +82,7 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                         }
                         return (
                             <div class="skill-info">
-                                <img class="skill-icon" alt={element.metric} src={require("../files/skills/Woodcutting_icon.webp")}></img> {/*"../files/skills/"+capitalizeFirstLetter(element.metric)+"_icon.webp")}></img> */}
+                                <img class="skill-icon" alt={element.metric} src={require("../files/activities/"+(element.metric)+".png")}></img> 
                                 <p class="bossing-metric">{capitalizeFirstLetter(element.metric).replaceAll("_", " ")}</p>
                                 <p>{(element.score)}</p>
                             </div>
