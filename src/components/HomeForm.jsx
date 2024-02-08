@@ -2,6 +2,7 @@ import React, {   useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/HomeTrackerForm.css';
 import './styles/TrackerForm.css';
+import "./styles/HomeForm.css"
 
 
 const HomeForm = () => {
@@ -26,7 +27,7 @@ const HomeForm = () => {
 
 
   return (
-    <div style={{paddingTop:"10vh", paddingBottom: "10vh"}}class="content">
+    <div style={{paddingTop:"20vh", paddingBottom: "20vh"}} class="content">
       <div className="centered-content">
         <h1 className="display-4 heading-yellow">Theoatrix Toolkit</h1>
         <h2 className="lead">Master Old School RuneScape</h2>
