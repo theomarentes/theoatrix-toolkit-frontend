@@ -31,6 +31,21 @@
   padding: 0px 3%;
 }
 
+.boss-info {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 3%;
+}
+.activity-info {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 3%;
+}
+
 
 .skill-icon {
   background-color: #5b5b5b;
@@ -49,6 +64,7 @@
   box-sizing: border-box;
   width: 75%;
   color:red;
+  margin-left:2%;
 }
 
 .level-value{
