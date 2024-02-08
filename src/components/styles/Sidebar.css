@@ -17,6 +17,9 @@
     min-height: 95vh
   }
   
+  .sidebar nav ul li a.active {
+    color: #ffd900;
+  }
   .sidebar.open {
     transform: translateX(0);
   }
