@@ -43,23 +43,26 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                         <p style={{ fontSize: "60%" }}>Bossing Hours</p>
                     </div>
                 </div>
-                <div class="stats-box">
-                    <h3 style={{ paddingTop: "20px", marginBottom: "0" }}>Progress To 99</h3>
-                    {Object.values(trackerData.data.latestSnapshot.data.skills).map((element) => {
-                        return (
-                            <div class="skill-info">
-                                <img class="skill-icon" alt={element.metric} src={require("../files/skills/" + capitalizeFirstLetter(element.metric) + "_icon.webp")}></img>
-                                <p>{capitalizeFirstLetter(element.metric)}</p>
 
-                                <progress class="progress-bar" id="file" value={element.experience} max="13034431"> {element.experience / 13034431} </progress>
-                                <p>{(element.level)}</p>
-                            </div>
-                        )
-                    })}
+                <div className="stats-box">
+                    <h3>Progress To 99</h3>
+                    {Object.values(trackerData.data.latestSnapshot.data.skills).map((element, index) => (
+                        <div className="skill-info" key={index}>
+                        <img className="skill-icon" alt={element.metric} src={require(`../files/skills/${capitalizeFirstLetter(element.metric)}_icon.webp`)} />
+                        <div className="skill-name">
+                            <p>{capitalizeFirstLetter(element.metric)}</p>
+                        </div>
+                        <progress className="progress-bar" value={element.experience} max={13034431}></progress>
+                        <div className="level-value">
+                            <p>{element.level}</p>
+                        </div>
+                        </div>
+                    ))}
                 </div>
+
                 <div class="bossing-box">
                     {console.log(trackerData.data.latestSnapshot.data)}
-                    <h3 style={{ paddingTop: "20px", marginBottom: "0" }}>Bossing Kills</h3>
+                    <h3>Bossing Kills</h3>
                     {Object.values(trackerData.data.latestSnapshot.data.bosses).map((element) => {
                         if (element.kills === -1) {
                             element.kills = 0
@@ -73,9 +76,10 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                         )
                     })}
                 </div>
+                
                 <div class="activities-box">
                     {console.log(trackerData.data.latestSnapshot.data)}
-                    <h3 style={{ paddingTop: "20px", marginBottom: "0" }}>Activities</h3>
+                    <h3>Activities</h3>
                     {Object.values(trackerData.data.latestSnapshot.data.activities).map((element) => {
                         if (element.score === -1) {
                             element.score = 0
