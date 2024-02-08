@@ -58,8 +58,7 @@
 .bossing-box {
   background-color: black;
   border-radius: 8px;
-  padding: 0;
-  margin: 0;
+  margin-top: 2%;
   display: flex;
   flex-wrap: wrap; 
   justify-content: space-between;
@@ -88,17 +87,32 @@
 }
 
 
-
 .activities-box {
   background-color: black;
   border-radius: 8px;
-  padding:0;
-  margin: 0;
+  margin-top: 2%;
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.activities-info {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 43%;
+  padding: 0% 2.5% 0% 2.5%; 
+}
+
+.activities-info img {
+  max-width: 100%;
+  padding: 0% 1% 0% 1%;
 }
 
 .activities-box h3 {
   padding-top: 20px;
+  width: 100%;
 }
+
 
 @media (min-width: 768px) {
   .container {
