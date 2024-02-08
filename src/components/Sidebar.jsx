@@ -12,6 +12,16 @@ const Sidebar = ({ children }) => {
     return window.location.pathname + window.location.search;
   };
 
+//match url path on anything beginning with with /tracker
+  const is_tracker = () => {
+    return getCurrentPath().match(/^\/tracker(\/.*|)$/);
+  };
+
+  // same as above for grand exchange
+  const is_grand_exchange = () => {
+    return getCurrentPath().match(/^\/grand-exchange(\/.*|)$/);
+  };
+
   return (
     <>
     <Header/>
@@ -20,7 +30,7 @@ const Sidebar = ({ children }) => {
         <nav>
           <ul>
             <li><a className={getCurrentPath() === '/' ? 'active' : ''} href="/">Home</a></li>
-            <li><a className={getCurrentPath() === '/tracker' ? 'active' : ''} href="/tracker">Account Tracker</a></li>
+            <li><a className={is_tracker()? 'active' : ''} href="/tracker">Account Tracker</a></li>
             <li><a className={getCurrentPath() === '/time-to-max' ? 'active' : ''} href="/time-to-max">Time To Max</a></li>
             <li><a className={getCurrentPath() === '/drop-simulator' ? 'active' : ''} href="/drop-simulator">Simulators</a></li>
             <li><a className={getCurrentPath() === '/grand-exchange' ? 'active' : ''} href="/grand-exchange">Grand Exchange</a></li>
