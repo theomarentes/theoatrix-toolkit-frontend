@@ -1,13 +1,13 @@
-import React, {   useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/HomeTrackerForm.css';
 import './styles/TrackerForm.css';
-import "./styles/HomeForm.css"
+import { TrackerContext } from '../contexts/TrackerProvider';
 
-
-const HomeForm = () => {
+const TimeToMaxForm = () => {
   const [username, setUsername] = useState('');
-
+  const [ showing, setShowing ] = useState('none');
+  let { trackerData } = useContext(TrackerContext)
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -17,20 +17,26 @@ const HomeForm = () => {
   const handleSearch = (event) => {
     event.preventDefault(); // Prevent the default form submission
     
-    navigate(`/tracker/${username}`);
+    navigate(`/time-to-max/${username}`);
 
-    
+    if (trackerData.data.username !== username) {
+      setShowing("inline");
+    }
     
     
   };
+  useEffect(() => {
 
+      setShowing("none");
+
+  }, [trackerData])
 
 
   return (
-    <div class="content2 content">
+<div className="content text-light">
       <div className="centered-content">
-        <h1 className="display-4 heading-yellow">Theoatrix Toolkit</h1>
-        <h2 className="lead">Master Old School RuneScape</h2>
+        <h1 className="display-4 heading-yellow">Time To Max</h1>
+        <h2 className="lead">Track Your Progress To Max</h2>
         <form onSubmit={handleSearch}>
           <div className="input-group mb-3">
             <input
@@ -48,10 +54,11 @@ const HomeForm = () => {
             </div>
             
           </div>
-             </form>
+          <img style={{width:"40px", display: showing, animation:"ease-in"}} src={require("../files/loading.gif")} alt="loading..."/>
+        </form>
       </div>
       </div>
   );
 };
 
-export default HomeForm;
+export default TimeToMaxForm;

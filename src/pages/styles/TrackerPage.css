@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 75vh;
+    min-height: 5vh;
+    align-items: flex-start; 
   }
   
   .centered-content {
@@ -13,7 +14,7 @@
   
   @media (min-width: 768px) {
     .content {
-      min-height: 75vh;
+      min-height: 5vh;
     }
   }
   .input-group {
@@ -42,3 +43,6 @@
     }
   }
 
+  .tracker-form, .tracker-display {
+    margin: 0;
+}

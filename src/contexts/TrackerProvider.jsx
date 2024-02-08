@@ -8,7 +8,6 @@ export function TrackerDataProvider(props){
 
     let [trackerData, setTrackerData] = useState(null); 
     const { username } = useParams();
-
     useEffect( () => {
       const fetchUser = async () => {
           const data = await fetch("https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/tracker/"+username)
@@ -16,6 +15,7 @@ export function TrackerDataProvider(props){
           setTrackerData(json)
       }
       fetchUser().catch(error => console.log(error));
+
     }, [username])
 
 
