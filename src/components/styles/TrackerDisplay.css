@@ -58,13 +58,36 @@
 .bossing-box {
   background-color: black;
   border-radius: 8px;
-  padding:0;
+  padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
 }
 
-.bossing-box h3{
-  padding-top: 20px;
+.boss-info {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 43%;
+  padding: 0% 2.5% 0% 2.5%; 
 }
+
+.boss-info img {
+  max-width: 100%; 
+  padding: 0% 1% 0% 1%;
+}
+
+.boss-info p {
+  padding: 0% 1% 0% 1%;
+}
+
+.bossing-box h3 {
+  padding-top: 20px;
+  width: 100%; 
+}
+
+
 
 .activities-box {
   background-color: black;
