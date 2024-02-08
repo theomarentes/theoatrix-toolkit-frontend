@@ -27,7 +27,7 @@ const HomeForm = () => {
 
 
   return (
-    <div style={{paddingTop:"20vh", paddingBottom: "20vh"}} class="content">
+    <div class="content2 content">
       <div className="centered-content">
         <h1 className="display-4 heading-yellow">Theoatrix Toolkit</h1>
         <h2 className="lead">Master Old School RuneScape</h2>
