@@ -18,7 +18,7 @@
   }
   
   .sidebar nav ul li a.active {
-    color: #ffd900; /* Highlight color for active link */
+    color: #ffd900;
   }
   .sidebar.open {
     transform: translateX(0);
