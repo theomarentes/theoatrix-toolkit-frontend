@@ -77,8 +77,7 @@ const TimeToMaxDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     } else {
         return(
             <>
-            <p></p>
-            <h1></h1>
+            
                 <div class="container">
 
                     <div class="box">
