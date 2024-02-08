@@ -68,8 +68,8 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                             element.kills = 0
                         }
                         return (
-                            <div class="skill-info">
-                                <img class="skill-icon" alt={element.metric} src={require("../files/bosses/"+(element.metric)+".png")}></img> 
+                            <div class="boss-info">
+                                <img class="boss-icon" alt={element.metric} src={require("../files/bosses/"+(element.metric)+".png")}></img> 
                                 <p class="bossing-metric">{capitalizeFirstLetter(element.metric).replaceAll("_", " ")}</p>
                                 <p>{(element.kills)} kills</p>
                             </div>
@@ -85,9 +85,9 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
                             element.score = 0
                         }
                         return (
-                            <div class="skill-info">
-                                <img class="skill-icon" alt={element.metric} src={require("../files/activities/"+(element.metric)+".png")}></img> 
-                                <p class="bossing-metric">{capitalizeFirstLetter(element.metric).replaceAll("_", " ")}</p>
+                            <div class="activities-info">
+                                <img class="activities-icon" alt={element.metric} src={require("../files/activities/"+(element.metric)+".png")}></img> 
+                                <p class="activities-metric">{capitalizeFirstLetter(element.metric).replaceAll("_", " ")}</p>
                                 <p>{(element.score)}</p>
                             </div>
                         )
