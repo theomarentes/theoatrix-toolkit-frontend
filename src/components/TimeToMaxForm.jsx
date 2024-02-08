@@ -33,7 +33,7 @@ const TimeToMaxForm = () => {
 
 
   return (
-
+<div className="content text-light">
       <div className="centered-content">
         <h1 className="display-4 heading-yellow">Time To Max</h1>
         <h2 className="lead">Track Your Progress To Max</h2>
@@ -57,7 +57,7 @@ const TimeToMaxForm = () => {
           <img style={{width:"40px", display: showing, animation:"ease-in"}} src={require("../files/loading.gif")} alt="loading..."/>
         </form>
       </div>
-
+      </div>
   );
 };
 
