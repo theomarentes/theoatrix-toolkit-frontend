@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage';
 import './styles.css'
 import TrackerPage from './pages/TrackerPage';
 import TimeToMaxPage from './pages/TimeToMaxPage';
+import AuthPage from './pages/AuthPage';
+import MyAccountPage from './pages/MyAccountPage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +21,8 @@ root.render(
                       <Route path="/tracker/:username" element={<TrackerPage />} />
                       <Route path="/time-to-max/" element={<TimeToMaxPage />} />
                       <Route path="/time-to-max/:username" element={<TimeToMaxPage />} />
-                    
+                      <Route path="/login" element={<AuthPage />} />
+                      <Route path="/account" element={<MyAccountPage/>} />
                   </Routes>
         </BrowserRouter>
     </React.StrictMode>
