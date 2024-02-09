@@ -22,7 +22,7 @@ root.render(
                       <Route path="/time-to-max/" element={<TimeToMaxPage />} />
                       <Route path="/time-to-max/:username" element={<TimeToMaxPage />} />
                       <Route path="/login" element={<AuthPage />} />
-                      <Route path="/account" element={<MyAccountPage/>} />
+                      <Route path="/my-account" element={<MyAccountPage/>} />
                   </Routes>
         </BrowserRouter>
     </React.StrictMode>
