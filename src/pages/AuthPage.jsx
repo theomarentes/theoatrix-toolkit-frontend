@@ -17,6 +17,7 @@ function AuthPage() {
         },
         body: JSON.stringify({ email, password }),
       });
+    
       const data = await response.json();
       if (response.ok) {
         console.log('Login successful:', data);
