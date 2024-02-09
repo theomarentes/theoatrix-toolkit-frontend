@@ -21,6 +21,7 @@ function AuthPage() {
       const data = await response.json();
       if (response.ok) {
         console.log('Login successful:', data);
+        console.log(data)
         localStorage.setItem('userToken', data.token);
         window.location.href = '/my-account';
       } else {

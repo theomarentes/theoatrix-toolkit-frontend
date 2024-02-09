@@ -2,19 +2,22 @@ import React, { useContext } from 'react';
 import './styles/TrackerDisplay.css';
 
 import { TrackerContext } from '../contexts/TrackerProvider';
+import FavouriteButton from './FavouriteButton';
+import { useLocation } from 'react-router-dom';
 
 
 
 const TimeToMaxDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     let { trackerData } = useContext(TrackerContext)
-    
+    const url = (useLocation()).pathname
+    const token = localStorage.getItem('userToken'); 
    
     if (trackerData && trackerData?.data?.displayName !== "undefined" && trackerData?.data?.latestSnapshot?.data?.bosses) {
         console.log(trackerData)
 
         return (
             <>
-
+            <FavouriteButton url={url} token={token} />
                 <h1>{trackerData.data.displayName}</h1>
                 <div class="container">
 
