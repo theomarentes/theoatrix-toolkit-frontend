@@ -56,7 +56,7 @@ const TrackerForm = () => {
             </div>
             
           </div>
-          <img style={{width:"40px", display: showing, animation:"ease-in"}} src={require("../files/loading.gif")} alt="loading..."/>
+          <img style={{width:"40px", display: showing, animation:"ease-in", margin: "auto"}} src={require("../files/loading.gif")} alt="loading..."/>
         </form>
       </div>
     </div>

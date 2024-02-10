@@ -24,9 +24,11 @@ function FavouriteButton({ url, token }) {
     }
   };
 
+  if (token) {
   return (
     <button className="btn btn-primary" onClick={addToFavourites}>Add to Favourites</button>
   );
+  }
 }
 
 export default FavouriteButton;

@@ -6,9 +6,8 @@
     margin-top: -10vh;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
-    width: auto; /* Adjust based on your form's width *//* Ensure it doesn't exceed the screen's width on small devices */
   }
+    
   
   /* Additional styling for the form elements */
   .content form {
