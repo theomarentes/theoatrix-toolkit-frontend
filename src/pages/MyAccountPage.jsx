@@ -16,6 +16,38 @@ function MyAccountPage() {
     navigate('/login'); // Redirect to login page
   };
 
+  const handleRemoveFavourite = async (urlToRemove) => {
+    const token = localStorage.getItem('userToken');
+    // Assume you have an endpoint /remove-favourite to handle the removal
+    try {
+      const response = await fetch('https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/user/remove-favourite', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'jwt': `${token}`,
+        },
+        body: JSON.stringify({ url: urlToRemove }),
+      });
+      if (response.ok) {
+        // Remove the URL from userData state to update UI
+        setUserData({
+          ...userData,
+          user: {
+            ...userData.user,
+            favourites: userData.user.favourites.filter(url => url !== urlToRemove)
+          }
+        });
+        alert('Favourite removed successfully');
+      } else {
+        // Handle failure
+        alert('Failed to remove favourite');
+      }
+    } catch (error) {
+      console.error('Error removing favourite:', error);
+      alert('Error removing favourite');
+    }
+  };
+
   useEffect(() => {
     if (token) {
       const fetchUserData = async () => {
@@ -60,11 +92,15 @@ function MyAccountPage() {
                 </button>
                 
               <div style={{margin:"50px"}}></div>
-              <h3>Favourites {userData.user.favourites}</h3>
+              <h3>My Favourites</h3>
               {userData.user.favourites ? (
-                (userData.user.favourites).map((element) => {
-                    return(element)
-                })
+                userData.user.favourites.map((url, index) => (
+                  <div key={index} style={{display: "flex", alignItems: "center", marginBottom: "10px", justifyContent: "center"}}>
+                    <div style={{marginRight: "1vw"}}>{(url).replaceAll("%20", "-")}</div>
+                    <a href={url} target="_blank" rel="noopener noreferrer" style={{marginRight: "10px", textDecoration: "none", color: "white" }}>View</a>
+                    <button className="btn btn-primary" onClick={() => handleRemoveFavourite(url)}>Remove</button>
+                  </div>
+                ))
               ) : (
                 <p>No Favourites</p>
               )}
