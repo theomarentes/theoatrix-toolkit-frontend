@@ -19,7 +19,7 @@ const TimeToMaxForm = () => {
     
     navigate(`/time-to-max/${username}`);
 
-    if (trackerData.data.username !== username) {
+    if (trackerData?.data?.username !== username) {
       setShowing("inline");
     }
     
@@ -54,7 +54,7 @@ const TimeToMaxForm = () => {
             </div>
             
           </div>
-          <img style={{width:"40px", display: showing, animation:"ease-in"}} src={require("../files/loading.gif")} alt="loading..."/>
+          <img style={{width:"40px", display: showing, animation:"ease-in", margin:"auto"}} src={require("../files/loading.gif")} alt="loading..."/>
         </form>
       </div>
       </div>
