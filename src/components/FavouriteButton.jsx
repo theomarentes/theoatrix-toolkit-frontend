@@ -25,7 +25,7 @@ function FavouriteButton({ url, token }) {
   };
 
   return (
-    <button onClick={addToFavourites}>Add to Favourites</button>
+    <button className="btn btn-primary" onClick={addToFavourites}>Add to Favourites</button>
   );
 }
 
