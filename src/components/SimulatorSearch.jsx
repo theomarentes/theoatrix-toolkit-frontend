@@ -6,7 +6,6 @@ const SimulatorSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuantity,setSearchQuantity] = useState(100);
   const [quantity, setQuantity] = useState('');
-  const [showing, setShowing] = useState('none'); // To control the display of the loading image
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
