@@ -5,7 +5,6 @@ import Sidebar from '../components/Sidebar';
 import "./styles/AllPages.css"
 
 import SimulatorSearch from '../components/SimulatorSearch';
-import SimulatorDisplay from '../components/SimulatorDisplay';
 
 
 const SimulatorPage = () => {
@@ -17,7 +16,7 @@ const SimulatorPage = () => {
         <Sidebar>
             <div class="page-container">
                 <SimulatorSearch />
-                <SimulatorDisplay/>
+               
             </div>
         </Sidebar>
         

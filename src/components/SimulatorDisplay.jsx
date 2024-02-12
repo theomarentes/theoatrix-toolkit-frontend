@@ -1,50 +1,73 @@
 import React, { useState, useEffect } from 'react';
+import "./styles/Simulator.css"
 
-const SimulatorDisplay = ({ monsterName , quantity}) => {
+const SimulatorDisplay = ({ monsterName, quantity }) => {
   const [monsterData, setMonsterData] = useState(null);
   const [loot, setLoot] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  const checkImage = (url) => {
+    return fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return url; // Image exists
+        }
+        return false
+      })
+      .catch(error => {
+        console.error(error);
+        return null; // Image does not exist or other error
+      });
+  };
+
+  const getBackgroundImageUrl = (name, id) => {
+    
+    if (checkImage(`https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`) !== false) {
+      return `url("https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png")`
+    } else 
+    if (checkImage(`https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`) !== false) {
+      return `url("https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png")`;
+    } else {
+      return `url("https://oldschool.runescape.wiki/images/Chaos_rune.png")`
+    }
+
+  };
+
+
   function simulateDrops(drops, killCount) {
     let results = {};
 
     for (let i = 0; i < killCount; i++) {
-        drops.forEach(drop => {
-            for (let j = 0; j < drop.rolls; j++) {
-                if (Math.random() <= drop.rarity) {
-                    let quantity = 0;
-                    if (typeof drop.quantity === 'string' && drop.quantity.includes('-')) {
-                        // If quantity is a range, calculate a random number within that range
-                        let [min, max] = drop.quantity.split('-').map(Number);
-                        quantity = Math.floor(Math.random() * (max - min + 1)) + min;
-                    } else {
-                        // If quantity is a single number, parse it as integer
-                        quantity = parseInt(drop.quantity, 10);
-                    }
-
-                    // Add to results, combining quantities for duplicates
-                    if (results[drop.id]) {
-                        results[drop.id].quantity += quantity;
-                    } else {
-                        results[drop.id] = {
-                            id: drop.id,
-                            name: drop.name,
-                            quantity: quantity
-                        };
-                    }
-                }
+      drops.forEach(drop => {
+        for (let j = 0; j < drop.rolls; j++) {
+          if (Math.random() <= drop.rarity) {
+            let quantity = 0;
+            if (typeof drop.quantity === 'string' && drop.quantity.includes('-')) {
+              let [min, max] = drop.quantity.split('-').map(Number);
+              quantity = Math.floor(Math.random() * (max - min + 1)) + min;
+            } else {
+              quantity = parseInt(drop.quantity, 10);
             }
-        });
+
+            if (results[drop.id]) {
+              results[drop.id].quantity += quantity;
+            } else {
+              results[drop.id] = {
+                id: drop.id,
+                name: drop.name,
+                quantity: quantity
+              };
+            }
+          }
+        }
+      });
     }
 
     return results;
-}
-
-  
+  }
 
   useEffect(() => {
     const fetchMonsterData = async () => {
-      setIsLoading(true);
       try {
         const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/simulator/${encodeURIComponent(monsterName)}`);
         if (!response.ok) {
@@ -52,56 +75,64 @@ const SimulatorDisplay = ({ monsterName , quantity}) => {
         }
         const data = await response.json();
         setMonsterData(data);
-        
       } catch (err) {
         setError(err.message);
-      } finally {
-        setIsLoading(false);
+        setLoot(null)
       }
     };
 
     if (monsterName) {
       fetchMonsterData();
-      
     }
+    
   }, [monsterName]);
 
   useEffect(() => {
-    // This useEffect depends on monsterData and will run after monsterData is updated
     if (monsterData?.monster?.drops && quantity) {
       setLoot(simulateDrops(monsterData.monster.drops, quantity));
     }
-  }, [monsterData, quantity]); 
-
-  if (isLoading) {
-    return <div>loading</div>;
-  }
+  }, [monsterData, quantity]);
 
   if (error) {
     return <div>Error: {error}</div>;
   }
-
+  
   return (
     <div>
-      {monsterData?.monster ? (
+      {loot && monsterData?.monster ? (
         <div>
-          <h2>{monsterData.monster.name}</h2>
-          {/* Display your monster data here. Example: */}
-          <p>Quantity: {quantity}</p>
-        
-          {loot && typeof loot === 'object' && Object.entries(loot).map(([key, { id, name, quantity }]) => (
-            
-            <div key={id}>
-             <img src={"https://oldschool.runescape.wiki/images/"+name.replaceAll(" ", "_")+".png"} alt={name}/>
-              {name}: {quantity}
-            </div>
-      ))}
+          <h1>{monsterData.monster.name} x{quantity}</h1>
+          <div style={{ display: 'flex', flexWrap: 'wrap', background: "black", borderRadius: "25px" }}>
+            {Object.entries(loot).map(([key, { id, name, quantity }]) => (
+              <div className="tooltip" style={{
+                width: '60px',
+                height: '60px',
+                position: 'relative',
+                margin: '5px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundSize: 'cover',
+                backgroundImage: getBackgroundImageUrl(name, id)
+              }} key={id}>
+                <span style={{
+                  color: 'white',
+                  fontWeight: 'bold',
+                  textShadow: '1px 1px 2px black',
+                  position: 'absolute'
+                }}>
+                  {quantity}
+                </span>
+                <span className="tooltiptext">{name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       ) : (
-        <p>No data found for monster: {monsterName}</p>
+        <p>Monster not found.</p> // This message shows when there's no loot
       )}
     </div>
   );
-};
+      };  
 
 export default SimulatorDisplay;
