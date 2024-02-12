@@ -16,10 +16,10 @@ const HomeNavBoxes = ({ children }) => {
         <img src={require("../files/Max_cape.png")} className="icon" alt="Max cape" />
         <p>Time To Max</p>
       </a>
-      <a href="/high-alchemy" className="box">
+     {/*  <a href="/high-alchemy" className="box">
         <img src={require("../files/High-Alchemy.png")} className="icon" alt="High Alchemy" />
         <p>High Alchemy</p>
-      </a>
+      </a> */}
       <a href="/simulator" className="box">
         <img src={require("../files/Olmlet.webp")} className="icon" alt="High Alchemy" />
         <p>Drop Simulator</p>
