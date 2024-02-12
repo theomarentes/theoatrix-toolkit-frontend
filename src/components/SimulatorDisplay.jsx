@@ -5,37 +5,41 @@ const SimulatorDisplay = ({ monsterName , quantity}) => {
   const [loot, setLoot] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
   function simulateDrops(drops, killCount) {
     let results = {};
-  
+
     for (let i = 0; i < killCount; i++) {
-      drops.forEach(drop => {
-        for (let j = 0; j < drop.rolls; j++) {
-          if (Math.random() <= drop.rarity) {
-            let quantity = 0;
-            if (typeof drop.quantity === 'string' && drop.quantity.includes('-')) {
-              // If quantity is a range, calculate a random number within that range
-              let [min, max] = drop.quantity.split('-').map(Number);
-              quantity = Math.floor(Math.random() * (max - min + 1)) + min;
-            } else {
-              // If quantity is a single number, parse it as integer
-              quantity = parseInt(drop.quantity, 10);
+        drops.forEach(drop => {
+            for (let j = 0; j < drop.rolls; j++) {
+                if (Math.random() <= drop.rarity) {
+                    let quantity = 0;
+                    if (typeof drop.quantity === 'string' && drop.quantity.includes('-')) {
+                        // If quantity is a range, calculate a random number within that range
+                        let [min, max] = drop.quantity.split('-').map(Number);
+                        quantity = Math.floor(Math.random() * (max - min + 1)) + min;
+                    } else {
+                        // If quantity is a single number, parse it as integer
+                        quantity = parseInt(drop.quantity, 10);
+                    }
+
+                    // Add to results, combining quantities for duplicates
+                    if (results[drop.id]) {
+                        results[drop.id].quantity += quantity;
+                    } else {
+                        results[drop.id] = {
+                            id: drop.id,
+                            name: drop.name,
+                            quantity: quantity
+                        };
+                    }
+                }
             }
-  
-            // Add to results, combining quantities for duplicates
-            if (results[drop.name]) {
-              results[drop.name] += quantity;
-            } else {
-              results[drop.name] = quantity;
-            }
-          }
-        }
-      });
+        });
     }
-  
+
     return results;
-  }
+}
+
   
 
   useEffect(() => {
@@ -84,8 +88,13 @@ const SimulatorDisplay = ({ monsterName , quantity}) => {
           <h2>{monsterData.monster.name}</h2>
           {/* Display your monster data here. Example: */}
           <p>Quantity: {quantity}</p>
-          {loot && typeof loot === 'object' && Object.entries(loot).map(([name, quantity]) => (
-        <div key={name}>{`${name}: ${quantity}`}</div>
+        
+          {loot && typeof loot === 'object' && Object.entries(loot).map(([key, { id, name, quantity }]) => (
+            
+            <div key={id}>
+             <img src={"https://oldschool.runescape.wiki/images/"+name.replaceAll(" ", "_")+".png"} alt={name}/>
+              {name}: {quantity}
+            </div>
       ))}
         </div>
       ) : (
