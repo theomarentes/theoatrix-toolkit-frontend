@@ -9,6 +9,7 @@ import TimeToMaxPage from './pages/TimeToMaxPage';
 import AuthPage from './pages/AuthPage';
 import MyAccountPage from './pages/MyAccountPage';
 import SimulatorPage from './pages/SimulatorPage';
+import GrandExchangePage from './pages/GrandExchangePage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,6 +26,7 @@ root.render(
                       <Route path="/login" element={<AuthPage />} />
                       <Route path="/my-account" element={<MyAccountPage/>} />
                       <Route path="/simulator" element={<SimulatorPage />} />
+                      <Route path="/grand-exchange" element={<GrandExchangePage />} /> 
                   </Routes>
         </BrowserRouter>
     </React.StrictMode>
