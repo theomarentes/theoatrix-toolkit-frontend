@@ -1,5 +1,5 @@
 import React from 'react';
-import GrandExchangeDisplay from '../components/GrandExchangeDisplay'; // Import the GrandExchangeDisplay component
+import GrandExchangeDisplay from '../components/GrandExchangeDisplay';
 
 const GrandExchangePage = () => {
   return (
