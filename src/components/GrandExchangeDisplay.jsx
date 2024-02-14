@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const GrandExchangeComponent = ({ itemName }) => {
   const [itemDetails, setItemDetails] = useState(null);
@@ -7,24 +7,20 @@ const GrandExchangeComponent = ({ itemName }) => {
   useEffect(() => {
     const fetchItemDetails = async () => {
       try {
-        const response = await fetch(`/items/${itemName}`);
-        const data = await response.json();
-        setItemDetails(data);
+        const itemDetailsResponse = await fetch(`/grand-exchange/${encodeURIComponent(itemName)}`);
+        const itemDetailsData = await itemDetailsResponse.json();
+        setItemDetails(itemDetailsData);
+
+        if (itemDetailsData && itemDetailsData.id) {
+          const itemPricesResponse = await fetch(`/grand-exchange/${itemDetailsData.id}`);
+          const itemPricesData = await itemPricesResponse.json();
+          setItemPrices(itemPricesData);
+        }
       } catch (error) {
         console.error('Error fetching item details:', error);
       }
     };
-
-    const fetchItemPrices = async () => {
-      try {
-        const response = await fetch(`/prices/${itemDetails._id}`);
-        const data = await response.json();
-        setItemPrices(data);
-      } catch (error) {
-        console.error('Error fetching item prices:', error);
-      }
-    };
-
+  
     if (itemName) {
       fetchItemDetails();
     }
@@ -32,7 +28,6 @@ const GrandExchangeComponent = ({ itemName }) => {
 
   return (
     <div className="grand-exchange-display">
-      <h2>Grand Exchange Item: {itemName}</h2>
       {itemDetails && (
         <div className="item-details">
           <p>Name: {itemDetails.name}</p>
