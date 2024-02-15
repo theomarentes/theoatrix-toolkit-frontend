@@ -1,52 +1,90 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-const GrandExchangeComponent = ({ itemName }) => {
-  const [itemDetails, setItemDetails] = useState(null);
-  const [itemPrices, setItemPrices] = useState(null);
+
+
+const ItemDetails = () => {
+  const [itemData, setItemData] = useState(null);
+  const [topData, setTopData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // React Router hook to get URL parameters
+  const { item } = useParams();
 
   useEffect(() => {
-    const fetchItemDetails = async () => {
-      try {
-        const response = await fetch(`/items/${itemName}`);
-        const data = await response.json();
-        setItemDetails(data);
-      } catch (error) {
-        console.error('Error fetching item details:', error);
-      }
-    };
 
-    const fetchItemPrices = async () => {
+    const getTop10 = async () => {
       try {
-        const response = await fetch(`/prices/${itemDetails._id}`);
+        const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/top10`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
         const data = await response.json();
-        setItemPrices(data);
+        var sendData = []
+        for (var item in data.items) {
+          const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/item/${data.items[item].id}`);
+          const data2 = await response.json();
+          sendData = [...sendData, data2]
+        }
+        setTopData(sendData);
       } catch (error) {
-        console.error('Error fetching item prices:', error);
+        console.log(error)
       }
-    };
-
-    if (itemName) {
-      fetchItemDetails();
     }
-  }, [itemName]);
+    getTop10()
+    
+  }, [])
+
+  useEffect(() => {
+    const fetchItemData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/item/${item}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        const data = await response.json();
+        setItemData(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (item) {
+      fetchItemData();
+    }
+  }, [item]); // Depend on 'item' to refetch when it changes
+
+  if (loading) {
+    return <div><h1>Top 10 Items</h1>{
+    topData?.map(item => {
+      console.log(item)
+      return <div>{item.item.name} - Price: {item.prices.high}</div>
+    })}</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
-    <div className="grand-exchange-display">
-      <h2>Grand Exchange Item: {itemName}</h2>
-      {itemDetails && (
-        <div className="item-details">
-          <p>Name: {itemDetails.name}</p>
-          <p>Examine: {itemDetails.examine}</p>
+    <div>
+      {itemData ? (
+        <div>
+          <h2>Item: {itemData.item.name}</h2>
+          <p>{itemData.item.examine}
+          Item ID: {itemData.item.id}</p>
+          <h3>High Price: {itemData.prices.high}</h3>
+          <h3>Low Price: {itemData.prices.low}</h3>
         </div>
-      )}
-      {itemPrices && (
-        <div className="item-prices">
-          <p>High Price: {itemPrices.high}</p>
-          <p>Low Price: {itemPrices.low}</p>
-        </div>
+      ) : (
+        <p>No data found for item: {item}</p>
       )}
     </div>
   );
 };
 
-export default GrandExchangeComponent;
+export default ItemDetails;
