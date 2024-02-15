@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import "./styles/Simulator.css"
 
 
 const ItemDetails = () => {
@@ -12,8 +12,34 @@ const ItemDetails = () => {
   // React Router hook to get URL parameters
   const { item } = useParams();
 
-  useEffect(() => {
-
+  
+    const checkImage = (url) => {
+      return fetch(url)
+        .then(response => {
+          if (response.ok) {
+            return url; // Image exists
+          }
+          return false
+        })
+        .catch(error => {
+          console.error(error);
+          return null; // Image does not exist or other error
+        });
+    };
+  
+    const getBackgroundImageUrl = (name, id) => {
+      
+      if (checkImage(`https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`) !== false) {
+        return `url("https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png")`
+      } else 
+      if (checkImage(`https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`) !== false) {
+        return `url("https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png")`;
+      } else {
+        return `url("https://oldschool.runescape.wiki/images/Chaos_rune.png")`
+      }
+  
+    };
+    useEffect(() => {
     const getTop10 = async () => {
       try {
         const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/top10`);
@@ -74,6 +100,19 @@ const ItemDetails = () => {
     <div>
       {itemData ? (
         <div>
+              <div className="tooltip" style={{
+                width: '100px',
+                height: '100px',
+                
+                margin: 'auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: "space-around",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
+                backgroundImage: getBackgroundImageUrl(itemData.item.name, itemData.item.id)
+              }} key={itemData.item.name} />
+               
           <h2>Item: {itemData.item.name}</h2>
           <p>{itemData.item.examine}
           Item ID: {itemData.item.id}</p>
