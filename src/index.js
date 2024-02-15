@@ -26,7 +26,8 @@ root.render(
                       <Route path="/login" element={<AuthPage />} />
                       <Route path="/my-account" element={<MyAccountPage/>} />
                       <Route path="/simulator" element={<SimulatorPage />} />
-                      <Route path="/grand-exchange" element={<GrandExchangePage />} /> 
+                      <Route path="/grand-exchange" element={<GrandExchangePage />} />
+                      <Route path="/grand-exchange/:item" element={<GrandExchangePage />} />  
                   </Routes>
         </BrowserRouter>
     </React.StrictMode>
