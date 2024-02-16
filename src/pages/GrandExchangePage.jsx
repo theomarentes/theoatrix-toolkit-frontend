@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import GrandExchangeForm from '../components/GrandExchangeForm'; 
-import GrandExchangeDisplay from '../components/GrandExchangeDisplay'; 
+import React from 'react';
+import GrandExchangeDisplay from '../components/GrandExchangeDisplay';
+import Sidebar from '../components/Sidebar';
+import GrandExchangeSearch from '../components/GrandExchangeSearch';
 
 const GrandExchangePage = () => {
-  const [searchItem, setSearchItem] = useState('');
-
-  const handleSearch = (itemName) => {
-    setSearchItem(itemName);
-  };
-
   return (
-    <div className="grand-exchange-page">
-      <GrandExchangeForm onSearch={handleSearch} />
-      {searchItem && <GrandExchangeDisplay itemName={searchItem} />} 
+    <div class="overlay">
+          
+        <Sidebar>
+            <div class="page-container">
+                <GrandExchangeSearch />
+                <GrandExchangeDisplay itemName="ItemNameHere" />
+            </div>
+      </ Sidebar> 
     </div>
   );
 };
