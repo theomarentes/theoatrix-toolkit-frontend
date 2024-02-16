@@ -42,9 +42,9 @@ const ItemDetails = () => {
           throw new Error(`Failed to fetch: ${response.status}`);
         }
         const data = await response.json();
-        setItemData(prevItems => [data, ...prevItems]); // Add new item data to the beginning of the array
-        const imageUrl = await fetchImageUrl(data.item.name, data.item.id); // Fetch image URL
-        setBackgroundImageUrls(prevUrls => [imageUrl, ...prevUrls]); // Add new image URL to the beginning of the array
+        setItemData(prevItems => [data, ...prevItems]);
+        const imageUrl = await fetchImageUrl(data.item.name, data.item.id); 
+        setBackgroundImageUrls(prevUrls => [imageUrl, ...prevUrls]); 
       } catch (err) {
         setError(err.message);
       } finally {
