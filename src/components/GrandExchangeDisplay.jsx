@@ -72,7 +72,7 @@ const ItemDetails = () => {
           <div className="searched-item" style={{ backgroundImage: `url(${backgroundImageUrls[index]})` }}>
             <div className="image-overlay">
               <p>{item.item.examine}</p>
-              <p>{item.item.id}</p>
+              <p>Item id: {item.item.id}</p>
             </div>
           </div>
           <div className="item-info">
