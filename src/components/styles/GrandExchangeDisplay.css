@@ -1,3 +1,30 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 3%;
+}
+
+.top-10-item {
+  background-color: black; /* Background color black */
+  color: white; /* Text color white for better visibility */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center items horizontally */
+}
+
+.tooltip {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px; /* Add some margin between image and text */
+}
+
+
+
 .item-details-container {
   display: flex;
   align-items: center;
