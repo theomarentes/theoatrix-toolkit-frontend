@@ -39,6 +39,18 @@ const ItemDetails = () => {
       }
   
     };
+
+    
+    function convertToMillion(number) {
+      if (number >= 1000000) {
+          return `${(number / 1000000).toFixed(1)}m`;
+      } else {
+          return number.toString();
+      }
+    }
+  
+
+
     useEffect(() => {
     const getTop10 = async () => {
       try {
@@ -82,15 +94,39 @@ const ItemDetails = () => {
     if (item) {
       fetchItemData();
     }
-  }, [item]); // Depend on 'item' to refetch when it changes
+  }, [item]); 
 
   if (loading) {
-    return <div><h1>Top 10 Items</h1>{
-    topData?.map(item => {
-      console.log(item)
-      return <div>{item.item.name} - Price: {item.prices.high}</div>
-    })}</div>;
-  }
+    return (
+      <>
+        <h1>Top 10 Items</h1>
+        
+        {topData?.map(item => (
+          <>
+          <div style={{padding:"3%", display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", maxWidth:"500px", alignContent:"center", margin:"auto", backgroundColor: "black0", borderRadius: "8px"}}>
+            <div 
+              className="tooltip" 
+              style={{
+                width: '50px',
+                height: '50px',
+                margin: '0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: "space-around",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
+                backgroundImage: getBackgroundImageUrl(item.item.name, item.item.id)
+              }} 
+              key={item.item.id} // Use item ID as the key
+            />
+            <div><h3>{item.item.name}</h3></div>
+            <div>Price: {convertToMillion(item.prices.high)}</div>
+            </div>
+          </>
+        ))}
+      </>
+    );}
+  
 
   if (error) {
     return <div>Error: {error}</div>;
