@@ -51,10 +51,9 @@ const SimulatorSearch = () => {
           </div>
           
            </form>
-        {/* Render SimulatorDisplay with the current monsterName */}
-        {monsterName && (
+        {monsterName ? (
           <SimulatorDisplay monsterName={monsterName} quantity={quantity}/>
-        )}
+        ) : (<div>e.g.  Zulrah  100 </div>)}
       </div>
     </div>
   );

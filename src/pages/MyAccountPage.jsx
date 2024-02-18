@@ -65,6 +65,9 @@ function MyAccountPage() {
           }
         } catch (error) {
           console.error('Error fetching user data:', error.message);
+          if (error.message === "Invalid JWT.") {
+            localStorage.removeItem('userToken');
+          }
           setErrorMessage(error.message);
         }
       };
@@ -84,9 +87,9 @@ function MyAccountPage() {
                 <h1>My Account</h1>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <p><b>Email:</b> {userData.user.email}</p>
-                <button className="btn btn-primary" type="submit">
+                {/* <button className="btn btn-primary" >
                 Change Password
-              </button>
+              </button> */}
                 <button className="btn btn-primary" onClick={handleLogout}>
                   Logout
                 </button>
