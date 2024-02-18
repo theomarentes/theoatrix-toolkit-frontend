@@ -60,13 +60,23 @@ const ItemDetails = () => {
           throw new Error(`Failed to fetch: ${response.status}`);
         }
         const data = await response.json();
-        setItemData(data);
+        setItemData(prevItems => [data, ...prevItems]);
+        const imageUrl = await fetchImageUrl(data.item.name, data.item.id); 
+        setBackgroundImageUrls(prevUrls => [imageUrl, ...prevUrls]); 
+    
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
-    }});
+    };
+
+    if (item) {
+      fetchItemData();
+    }
+  }, [item]); 
+    
+
 
   useEffect(() => {
     const getTop10 = async () => {
