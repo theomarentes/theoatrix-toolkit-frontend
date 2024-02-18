@@ -32,7 +32,7 @@ const Sidebar = ({ children }) => {
             <li><a className={getCurrentPath() === '/' ? 'active' : ''} href="/">Home</a></li>
             <li><a className={is_tracker()? 'active' : ''} href="/tracker">Account Tracker</a></li>
             <li><a className={getCurrentPath() === '/time-to-max' ? 'active' : ''} href="/time-to-max">Time To Max</a></li>
-            <li><a className={getCurrentPath() === '/simulator' ? 'active' : ''} href="/drop-simulator">Drop Simulator</a></li>
+            <li><a className={getCurrentPath() === '/simulator' ? 'active' : ''} href="/simulator">Drop Simulator</a></li>
             <li><a className={is_grand_exchange() === '/grand-exchange' ? 'active' : ''} href="/grand-exchange">Grand Exchange</a></li>
             <li><a className={getCurrentPath() === '/my-account' ? 'active' : ''} href="/my-account">My Account</a></li>
           </ul>

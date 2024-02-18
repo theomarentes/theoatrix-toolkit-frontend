@@ -55,7 +55,7 @@ const ItemDetails = () => {
     if (item) {
       fetchItemData();
     }
-  }, [item]); // Depend on 'item' to refetch when it changes
+  }, [item]); 
 
   if (loading) {
     return <div>Loading...</div>;
