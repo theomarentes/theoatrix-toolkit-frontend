@@ -5,6 +5,7 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
   const [monsterData, setMonsterData] = useState(null);
   const [loot, setLoot] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false)
   
   const checkImage = (url) => {
     return fetch(url)
@@ -69,15 +70,18 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
   useEffect(() => {
     const fetchMonsterData = async () => {
       try {
+        setLoading(true)
         const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/simulator/${encodeURIComponent(monsterName)}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status}`);
         }
         const data = await response.json();
         setMonsterData(data);
+        setLoading(false)
       } catch (err) {
         setError(err.message);
         setLoot(null)
+        setLoading(false)
       }
     };
 
@@ -129,8 +133,7 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
           </div>
         </div>
       ) : (
-        <p>Monster not found.</p> // This message shows when there's no loot
-      )}
+        loading ? (<p>searching</p>) : (<p>Monster not found.</p>))}
     </div>
   );
       };  
