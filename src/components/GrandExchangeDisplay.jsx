@@ -1,80 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import "./styles/Simulator.css"
-
+import "./styles/GrandExchangeDisplay.css"
 
 const ItemDetails = () => {
-  const [itemData, setItemData] = useState(null);
-  const [topData, setTopData] = useState(null);
+  const [itemData, setItemData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [backgroundImageUrls, setBackgroundImageUrls] = useState([]);
+  const [topData, setTopData] = useState(null);
+  
   // React Router hook to get URL parameters
   const { item } = useParams();
-
   
-    const checkImage = (url) => {
-      return fetch(url)
-        .then(response => {
-          if (response.ok) {
-            return url; // Image exists
-          }
-          return false
-        })
-        .catch(error => {
-          console.error(error);
-          return null; // Image does not exist or other error
-        });
-    };
-  
-    const getBackgroundImageUrl = (name, id) => {
-      
-      if (checkImage(`https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`) !== false) {
-        return `url("https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png")`
-      } else 
-      if (checkImage(`https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`) !== false) {
-        return `url("https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png")`;
-      } else {
-        return `url("https://oldschool.runescape.wiki/images/Chaos_rune.png")`
-      }
-  
-    };
-
-    
-    function convertToMillion(number) {
-      if (number >= 1000000) {
-          return `${(number / 1000000).toFixed(1)}m`;
-      } else {
-          return number.toString();
-      }
+  const checkImage = async (url) => {
+    try {
+      const response = await fetch(url);
+      return response.ok;
+    } catch (error) {
+      console.error(error);
+      return false;
     }
-  
+  };
 
 
-    useEffect(() => {
-    const getTop10 = async () => {
-      try {
-        const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/top10`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch: ${response.status}`);
-        }
-        const data = await response.json();
-        var sendData = []
-        for (var item in data.items) {
-          const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/item/${data.items[item].id}`);
-          const data2 = await response.json();
-          sendData = [...sendData, data2]
-        }
-        setTopData(sendData);
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getTop10()
+
+  const getBackgroundImageUrl = (name, id) => {
     
-  }, [])
+    if (checkImage(`https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`) !== false) {
+      return `url("https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png")`
+    } else 
+    if (checkImage(`https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`) !== false) {
+      return `url("https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png")`;
+    } else {
+      return `url("https://oldschool.runescape.wiki/images/Chaos_rune.png")`
+    }
+
+  };
+
+
 
   useEffect(() => {
+    const fetchImageUrl = async (name, id) => {
+      let imageUrl = "";
+      if (await checkImage(`https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`)) {
+        imageUrl = `https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`;
+      } else if (await checkImage(`https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`)) {
+        imageUrl = `https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`;
+      } else {
+        imageUrl = `https://oldschool.runescape.wiki/images/Chaos_rune.png`;
+      }
+      return imageUrl;
+    };
+  
     const fetchItemData = async () => {
       setLoading(true);
       try {
@@ -89,14 +66,68 @@ const ItemDetails = () => {
       } finally {
         setLoading(false);
       }
-    };
+    }});
 
-    if (item) {
-      fetchItemData();
+  useEffect(() => {
+    const getTop10 = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/top10`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        const data = await response.json();
+        var sendData = []
+        for (var item in data.items) {
+          const response = await fetch(`https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/ge/item/${data.items[item].id}`);
+          const data2 = await response.json();
+          sendData = [...sendData, data2]
+        }
+        setTopData(sendData);
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
     }
-  }, [item]); 
+    getTop10()
+    
+    
+  }, [])
+
+  const convertToMillion = (value) => {
+    return (value / 1000000).toFixed(2) + 'M';
+  };
+
 
   if (loading) {
+    return <div>loading</div>
+  }
+
+if ((itemData).length > 0) {
+  return (
+    <div>
+      {itemData.map((item, index) => (
+        <div className="item-details-container" key={index}>
+          <div className="searched-item" style={{ backgroundImage: `url(${backgroundImageUrls[index]})` }}>
+            <div className="image-overlay">
+              <p>{item.item.examine}</p>
+              <p>Item id: {item.item.id}</p>
+            </div>
+          </div>
+          <div className="item-info">
+            <h2>{item.item.name}</h2>
+            <p>High {item.prices.high}</p>
+            <p>Low {item.prices.low}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+  
+
+
+  if (topData) {
     return (
       <>
         <h1>Top 10 Items</h1>
@@ -132,34 +163,7 @@ const ItemDetails = () => {
     return <div>Error: {error}</div>;
   }
 
-  return (
-    <div>
-      {itemData ? (
-        <div>
-              <div className="tooltip" style={{
-                width: '100px',
-                height: '100px',
-                
-                margin: 'auto',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: "space-around",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-                backgroundImage: getBackgroundImageUrl(itemData.item.name, itemData.item.id)
-              }} key={itemData.item.name} />
-               
-          <h2>Item: {itemData.item.name}</h2>
-          <p>{itemData.item.examine}
-          Item ID: {itemData.item.id}</p>
-          <h3>High Price: {itemData.prices.high}</h3>
-          <h3>Low Price: {itemData.prices.low}</h3>
-        </div>
-      ) : (
-        <p>No data found for item: {item}</p>
-      )}
-    </div>
-  );
+  
 };
 
 export default ItemDetails;
