@@ -34,6 +34,21 @@ const ItemDetails = () => {
     return imageUrl;
   };
 
+
+  const getBackgroundImageUrl = (name, id) => {
+    
+    if (checkImage(`https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`) !== false) {
+      return `url("https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png")`
+    } else 
+    if (checkImage(`https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`) !== false) {
+      return `url("https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png")`;
+    } else {
+      return `url("https://oldschool.runescape.wiki/images/Chaos_rune.png")`
+    }
+
+  };
+
+
   useEffect(() => {
     const fetchItemData = async () => {
       setLoading(true);
@@ -85,16 +100,7 @@ const ItemDetails = () => {
     return (value / 1000000).toFixed(2) + 'M';
   };
 
-  const getBackgroundImageUrl = (name, id) => {
-    if (backgroundImageUrls.length === 0) return '';
 
-    const index = itemData.findIndex(item => item.item.id === id);
-    if (index !== -1) {
-      return `url(${backgroundImageUrls[index]})`;
-    } else {
-      return '';
-    }
-  };
 
   if (loading) {
     return (
