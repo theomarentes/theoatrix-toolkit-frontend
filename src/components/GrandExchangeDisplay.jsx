@@ -38,6 +38,7 @@ const ItemDetails = () => {
   };
 
 
+
   useEffect(() => {
     const fetchImageUrl = async (name, id) => {
       let imageUrl = "";
@@ -59,20 +60,13 @@ const ItemDetails = () => {
           throw new Error(`Failed to fetch: ${response.status}`);
         }
         const data = await response.json();
-        setItemData(prevItems => [data, ...prevItems]);
-        const imageUrl = await fetchImageUrl(data.item.name, data.item.id); 
-        setBackgroundImageUrls(prevUrls => [imageUrl, ...prevUrls]); 
+        setItemData(data);
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
-    };
-
-    if (item) {
-      fetchItemData();
-    }
-  }, [item]); 
+    }});
 
   useEffect(() => {
     const getTop10 = async () => {
