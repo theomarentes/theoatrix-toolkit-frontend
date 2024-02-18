@@ -1,0 +1,24 @@
+.simulator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+
+  
+  .simulator-form .input-group-append {
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .simulator-form {
+      flex-direction: row;
+    }
+  
+    .simulator-form input,
+    .simulator-form .input-group-append {
+      flex: 1;
+    }
+  }
+  
