@@ -28,10 +28,14 @@ const HomeNavBoxes = ({ children }) => {
         <img src={require("../files/coins.png")} className="icon" alt="Coins" />
         <p>Grand Exchange</p>
       </a>
-      <a href="/guides" className="box">
+      <a href="https://youtube.com/theoatrix" className="box">
+        <img src={require("../files/yt.png")} className="icon" alt="YouTube" />
+        <p>Videos</p>
+      </a>
+      {/* <a href="/guides" className="box">
         <img src={require("../files/Construction-guide.png")} className="icon" alt="Construction guide" />
         <p>1-99 Guides</p>
-      </a>
+      </a> */}
       <a href="/my-account" className="box">
         <img src={require("../files/junk-checker.png")} className="icon" alt="Junk checker" />
         <p>My Account</p>
