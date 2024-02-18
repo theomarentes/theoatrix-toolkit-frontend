@@ -50,7 +50,7 @@ const HomeForm = () => {
             </div>
             
           </div>
-             </form>
+          </form>
       </div>
       </div>
   );
