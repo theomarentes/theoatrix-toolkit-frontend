@@ -4,16 +4,16 @@
     align-items: center;
     justify-content: center;
     margin-top: -10vh;
-    padding: 20px;
+ 
     border-radius: 10px;
   }
     
   
-  /* Additional styling for the form elements */
+ 
   .content form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between form elements */
+    gap: 10px;
   }
   
   .content form input,
@@ -21,25 +21,25 @@
     padding: 10px;
     margin-left:10px;
     border-radius: 5px;
-    border: 1px solid #ddd; /* Light border for inputs and button */
+    border: 1px solid #ddd;
   }
   
   .content form button {
-    background-color: #f0f0f0; /* Light background for the button */
+    background-color: #f0f0f0;
     cursor: pointer;
   }
   
-  /* Style for switching between login and signup */
+ 
   .content p {
     text-align: center;
     
-    color: #fff; /* White text for better visibility */
+    color: #fff;
   }
   
   .content p button {
     background: none;
     border: none;
-    color: #82b1ff; /* Light blue for clickable text */
+    color: #82b1ff;
     cursor: pointer;
     padding: 0;
   }
