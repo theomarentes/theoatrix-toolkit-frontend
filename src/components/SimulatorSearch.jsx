@@ -25,7 +25,7 @@ const SimulatorSearch = () => {
 
   return (
     <div className="content text-light">
-      <div className="centered-content" style={{paddingTop:"20vh"}}>
+      <div className="centered-content" >
         <h1 className="display-4 heading-yellow">Drop Simulator</h1>
         <h2 className="lead">See what drops you'll get from certain bosses</h2>
         <form onSubmit={handleSearch} >
