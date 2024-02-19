@@ -12,12 +12,10 @@ const Sidebar = ({ children }) => {
     return window.location.pathname + window.location.search;
   };
 
-//match url path on anything beginning with with /tracker
   const is_tracker = () => {
     return getCurrentPath().match(/^\/tracker(\/.*|)$/);
   };
 
-  // same as above for grand exchange
   const is_grand_exchange = () => {
     return getCurrentPath().match(/^\/grand-exchange(\/.*|)$/);
   };

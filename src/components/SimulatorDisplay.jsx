@@ -11,13 +11,13 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
     return fetch(url)
       .then(response => {
         if (response.ok) {
-          return url; // Image exists
+          return url; 
         }
         return false
       })
       .catch(error => {
         console.error(error);
-        return null; // Image does not exist or other error
+        return null; 
       });
   };
 
