@@ -19,8 +19,8 @@ const SimulatorSearch = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     setMonsterName(searchTerm);
-    setQuantity(searchQuantity) // Update the monsterName state to trigger the search in SimulatorDisplay
-    // setShowing('block'); // Show loading gif
+    setQuantity(searchQuantity)
+    // setShowing('block'); 
   };
 
   return (

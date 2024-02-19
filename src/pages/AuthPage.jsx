@@ -6,7 +6,7 @@ import "./styles/AuthPage.css"
 
 function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(''); // Step 1: Add state for error message
+  const [errorMessage, setErrorMessage] = useState(''); 
 
   const handleLogin = async (email, password) => {
     try {
@@ -29,7 +29,7 @@ function AuthPage() {
       }
     } catch (error) {
       console.error('Login error:', error.message);
-      setErrorMessage(error.message); // Step 2: Set error message on catch
+      setErrorMessage(error.message); 
     }
   };
 
@@ -52,7 +52,7 @@ function AuthPage() {
       }
     } catch (error) {
       console.error('Sign-up error:', error.message);
-      setErrorMessage(error.message); // Set error message on catch
+      setErrorMessage(error.message); 
     }
   };
 

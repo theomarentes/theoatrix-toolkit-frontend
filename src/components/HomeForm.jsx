@@ -15,7 +15,7 @@ const HomeForm = () => {
   };
 
   const handleSearch = (event) => {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
     
     navigate(`/tracker/${username}`);
 
