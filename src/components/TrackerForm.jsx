@@ -36,7 +36,7 @@ const TrackerForm = () => {
 
   return (
     <div className="content text-light">
-      <div className="centered-content" style={{paddingTop:"20vh"}}>
+      <div className="centered-content">
         <h1 className="display-4 heading-yellow">Account Tracker</h1>
         <h2 className="lead">Get Useful Insight Into Your OSRS Account</h2>
         <form onSubmit={handleSearch}>
