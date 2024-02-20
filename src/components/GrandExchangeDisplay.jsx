@@ -10,7 +10,6 @@ const ItemDetails = () => {
   const [backgroundImageUrls, setBackgroundImageUrls] = useState([]);
   const [topData, setTopData] = useState(null);
   
-  // React Router hook to get URL parameters
   const { item } = useParams();
   
   const checkImage = async (url) => {
@@ -142,6 +141,7 @@ if ((itemData).length > 0) {
     return (
       <>
         <h1>Top 10 Items</h1>
+
         <div className="top-10-container">
           {topData?.map(item => (
             <div className="top-10-item" key={item.item.id}>
@@ -153,6 +153,7 @@ if ((itemData).length > 0) {
               </div>
               <div><h3>{item.item.name}</h3></div>
               <div>Price: {convertToMillion(item.prices.high)}</div>
+
             </div>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import SimulatorDisplay from './SimulatorDisplay'; // Adjust the import path as necessary
+import SimulatorDisplay from './SimulatorDisplay';
+import "./styles/SimulatorSearch.css" // Adjust the import path as necessary
 
 const SimulatorSearch = () => {
   const [monsterName, setMonsterName] = useState('');
@@ -18,42 +19,45 @@ const SimulatorSearch = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     setMonsterName(searchTerm);
-    setQuantity(searchQuantity) // Update the monsterName state to trigger the search in SimulatorDisplay
-    // setShowing('block'); // Show loading gif
+    setQuantity(searchQuantity)
+    // setShowing('block'); 
   };
 
   return (
     <div className="content text-light">
-      <div className="centered-content" style={{paddingTop:"20vh"}}>
+      <div className="centered-content" >
         <h1 className="display-4 heading-yellow">Drop Simulator</h1>
         <h2 className="lead">See what drops you'll get from certain bosses</h2>
-        <form onSubmit={handleSearch}>
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter A Boss Name"
-              value={searchTerm}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Enter Quantity"
-              value={searchQuantity}
-              onChange={handleInputChange2}
-            />
-            <div className="input-group-append">
+        <form onSubmit={handleSearch} >
+          <div className="row simulator-form" >
+            <div className="col">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter A Boss Name"
+                value={searchTerm}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="col">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Enter Quantity"
+                value={searchQuantity}
+                onChange={handleInputChange2}
+              />
+            </div>
+            <div className="col-auto">
               <button className="btn btn-primary" type="submit">
                 Simulate
               </button>
             </div>
           </div>
-          
-           </form>
+        </form>
         {monsterName ? (
           <SimulatorDisplay monsterName={monsterName} quantity={quantity}/>
-        ) : (<div>e.g.  Zulrah  100 </div>)}
+        ) : (<div style={{marginTop: "20px"}}>e.g.  Zulrah  100 </div>)}
       </div>
     </div>
   );
