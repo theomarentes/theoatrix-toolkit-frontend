@@ -140,8 +140,9 @@ if ((itemData).length > 0) {
   if (topData) {
     return (
       <>
+      <div className='top-items-container'>
         <h1>Top 10 Items</h1>
-
+        </div>
         <div className="top-10-container">
           {topData?.map(item => (
             <div className="top-10-item" key={item.item.id}>

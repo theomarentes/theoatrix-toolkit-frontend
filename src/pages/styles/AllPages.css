@@ -1,3 +1,14 @@
+#root {
+  height: 102%;
+}
+
+.fullscreen-image {
+  height:100%;
+}
+.overlay {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
