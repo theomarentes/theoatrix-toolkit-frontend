@@ -20,6 +20,10 @@ const Sidebar = ({ children }) => {
     return getCurrentPath().match(/^\/grand-exchange(\/.*|)$/);
   };
 
+  const is_time_to_max= () => {
+  return getCurrentPath().match(/^\/time-to-max(\/.*|)$/)
+  }
+
   return (
     <>
     <Header/>
@@ -29,7 +33,7 @@ const Sidebar = ({ children }) => {
           <ul>
             <li><a className={getCurrentPath() === '/' ? 'active' : ''} href="/">Home</a></li>
             <li><a className={is_tracker()? 'active' : ''} href="/tracker">Account Tracker</a></li>
-            <li><a className={getCurrentPath() === '/time-to-max' ? 'active' : ''} href="/time-to-max">Time To Max</a></li>
+            <li><a className={is_time_to_max()? 'active' : ''} href="/time-to-max">Time To Max</a></li>
             <li><a className={getCurrentPath() === '/simulator' ? 'active' : ''} href="/simulator">Drop Simulator</a></li>
             <li><a className={is_grand_exchange()? 'active' : ''} href="/grand-exchange">Grand Exchange</a></li>
             <li><a className={getCurrentPath() === '/my-account' ? 'active' : ''} href="/my-account">My Account</a></li>
