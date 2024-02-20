@@ -140,32 +140,31 @@ if ((itemData).length > 0) {
     return (
       <>
         <h1>Top 10 Items</h1>
-        
-        {topData?.map(item => (
-          <>
-          <div style={{padding:"3%", display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", maxWidth:"500px", alignContent:"center", margin:"auto", backgroundColor: "black0", borderRadius: "8px"}}>
-            <div 
-              className="tooltip" 
-              style={{
-                width: '50px',
-                height: '50px',
-                margin: '0',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: "space-around",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-                backgroundImage: getBackgroundImageUrl(item.item.name, item.item.id)
-              }} 
-              key={item.item.id}
-            />
-            <div><h3>{item.item.name}</h3></div>
-            <div>Price: {convertToMillion(item.prices.high)}</div>
+
+        <div className="top-10-container">
+          {topData?.map(item => (
+            <div className="top-10-item" key={item.item.id}>
+              <div
+                className="tooltip"
+                style={{
+                  backgroundImage: getBackgroundImageUrl(item.item.name, item.item.id)
+                }}
+              >
+                <div className="tooltip-content">
+                  <p>{item.item.examine}</p>
+                  <p>Item id: {item.item.id}</p>
+                </div>
+              </div>
+              <div><h3>{item.item.name}</h3></div>
+              <div>Price: {convertToMillion(item.prices.high)}</div>
+
             </div>
-          </>
-        ))}
+          ))}
+        </div>
       </>
-    );}
+    );
+  }
+  
   
 
   if (error) {

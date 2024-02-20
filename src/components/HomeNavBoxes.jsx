@@ -6,7 +6,7 @@ const HomeNavBoxes = ({ children }) => {
 
   return (
     <>
-      <div className="grid-container">
+      <div className="nav-boxes-container">
       <a href="/tracker" className="box">
         <img src={require("../files/Skills-icon.png")} className="icon" alt="Skills icon" />
         <p>Account Tracker</p>

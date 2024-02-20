@@ -1,8 +1,6 @@
 import React, {   useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './styles/HomeTrackerForm.css';
-import './styles/TrackerForm.css';
-import "./styles/HomeForm.css"
+import './styles/GrandExchangeDisplay.css';
 
 function capitalizeFirstLetter(string) {
     if (!string) return '';
@@ -52,7 +50,7 @@ const HomeForm = () => {
             </div>
             
           </div>
-             </form>
+          </form>
       </div>
       </div>
   );
