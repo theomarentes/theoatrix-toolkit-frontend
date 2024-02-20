@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./styles/GrandExchangeDisplay.css"
+import "./styles/AllPages.css"
 
 const ItemDetails = () => {
   const [itemData, setItemData] = useState([]);
@@ -144,13 +145,8 @@ if ((itemData).length > 0) {
         <div className="top-10-container">
           {topData?.map(item => (
             <div className="top-10-item" key={item.item.id}>
-              <div
-                className="tooltip"
-                style={{
-                  backgroundImage: getBackgroundImageUrl(item.item.name, item.item.id)
-                }}
-              >
-                <div className="tooltip-content">
+              <div className="top-10-image" style={{backgroundImage: getBackgroundImageUrl(item.item.name, item.item.id)}}>
+                <div className="top-10-image-content">
                   <p>{item.item.examine}</p>
                   <p>Item id: {item.item.id}</p>
                 </div>
@@ -163,8 +159,6 @@ if ((itemData).length > 0) {
       </>
     );
   }
-  
-  
 
   if (error) {
     return <div>Error: {error}</div>;

@@ -1,6 +1,7 @@
 import React, {   useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/GrandExchangeDisplay.css';
+import "./styles/AllPages.css"
 
 function capitalizeFirstLetter(string) {
     if (!string) return '';
@@ -43,7 +44,7 @@ const HomeForm = () => {
               onChange={handleInputChange}
             />
             <div className="input-group-append">
-              <button className="btn btn-primary" type="submit">
+              <button className="form-button" type="submit">
                 Search
               </button>
               
