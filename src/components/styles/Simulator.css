@@ -1,25 +1,61 @@
-.tooltip {
-    position: relative;
-    display: inline-block;
-   
-  }
-  
- 
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-   
-   
-    position: absolute;
-    z-index: 1;
-  }
-  
- 
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
+#root {
+  height: 112%;
+}
+
+.loot-box {
+display: flex;
+flex-Wrap: wrap;
+ background: black; 
+ border-radius: 25px; 
+}
+
+.loot-box-image {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
+
+.loot-box-image:hover .drop-item-text {
+  visibility: visible;
+}
+
+.drop-item-text {
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.drop-item-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.drop-quantity {
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  position: absolute;
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}

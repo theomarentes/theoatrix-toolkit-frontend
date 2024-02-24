@@ -1,66 +1,51 @@
 .content {
-    text-align: center;
-    color: white;
-    line-height: 1;
-    max-width: 600px;
-    padding-top: 50px;
+  text-align: center;
+  color: white;
+  line-height: 1;
+  max-width: 600px;
+  padding-top: 50px;
 }
 
 
-  .content2.content.content3 {
-    padding-top: 50px;
-  }
-.centered-content {
-    min-height: 30vh;
-  }
-  
-  @media (min-width: 768px) {
-    .content {
-      min-height: 75vh;
-    }
-  }
+.content2.content.content3 {
+  padding-top: 50px;
+}
 
-  .centered-content {
-    max-width: 600px;
-    padding: 1rem;;
+.centered-content {
+  min-height: 30vh;
+}
+
+  @media (min-width: 768px) {
+  .content {
+    min-height: 75vh;
   }
-  
+}
+
+.centered-content {
+  max-width: 600px;
+  padding: 1rem;;
+}
+
 
   .input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .input-group .form-control {
-    flex-grow: 1;
-    margin-right: 0.5rem;
-  }
-  
-  .input-group-append {
-    flex-shrink: 0;
-  }
-  
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 
-  .form-control {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 0.8rem;
-  }
-  
-  .btn-primary {
-    background-color: #FFD900;
-    border-color: #FFD900;
-    color: black;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: background-color 0.2s ease;
-  }
-  
-  .btn-primary:hover {
-    background-color: #ff8c00;
-  }
-  
+.input-group .form-control {
+  flex-grow: 1;
+  margin-right: 0.5rem;
+}
+
+.input-group-append {
+  flex-shrink: 0;
+}
+
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 0.8rem;
+}

@@ -106,28 +106,13 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
       {loot && monsterData?.monster ? (
         <div>
           <h1>{monsterData.monster.name} x{quantity}</h1>
-          <div style={{ display: 'flex', flexWrap: 'wrap', background: "black", borderRadius: "25px" }}>
+          <div className="loot-box">
             {Object.entries(loot).map(([key, { id, name, quantity }]) => (
-              <div className="tooltip" style={{
-                width: '60px',
-                height: '60px',
-                position: 'relative',
-                margin: '5px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: getBackgroundImageUrl(name, id)
-              }} key={id}>
-                <span style={{
-                  color: 'white',
-                  fontWeight: 'bold',
-                  textShadow: '1px 1px 2px black',
-                  position: 'absolute'
-                }}>
+              <div className="loot-box-image" style={{backgroundImage: getBackgroundImageUrl(name, id)}} key={id}>
+                <span className="drop-quantity">
                   {quantity}
                 </span>
-                <span className="tooltiptext">{name}</span>
+                <span className="drop-item-text">{name}</span>
               </div>
             ))}
           </div>
@@ -136,6 +121,6 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
         loading ? (<p>searching</p>) : (<p>Monster not found.</p>))}
     </div>
   );
-      };  
+      }
 
 export default SimulatorDisplay;
