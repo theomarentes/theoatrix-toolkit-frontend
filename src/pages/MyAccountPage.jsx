@@ -10,10 +10,47 @@ function MyAccountPage() {
   const token = localStorage.getItem('userToken');
   const navigate = useNavigate(); // Use the useNavigate hook
 
+  const [showChangePassword, setShowChangePassword] = useState(false);
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+
+
   // Function to handle logout
   const handleLogout = () => {
     localStorage.removeItem('userToken'); // Clear the userToken from localStorage
     navigate('/login'); // Redirect to login page
+  };
+
+  //function for change password
+  const handleChangePassword = async () => {
+    setShowChangePassword(true); // Show the change password fields
+  };
+
+  /* Handles the submission of the password change request to the backend.
+   Sends a PUT request to the backend API endpoint to update the user's password. */
+  const handleConfirmChangePassword = async () => {
+    try {
+      const response = await fetch('https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/user/change-password', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'jwt': `${token}`,
+        },
+        body: JSON.stringify({ oldPassword, newPassword }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message);
+        setOldPassword('');
+        setNewPassword('');
+        setShowChangePassword(false); 
+      } else {
+        throw new Error(data.message || 'Failed to change password');
+      }
+    } catch (error) {
+      console.error('Error changing password:', error);
+      alert('Error changing password');
+    }
   };
 
   const handleRemoveFavourite = async (urlToRemove) => {
@@ -83,13 +120,28 @@ function MyAccountPage() {
         return (
           <div className="overlay">
             <Sidebar>
-              <div className="page-container">
-                <h1>My Account</h1>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
-                <p><b>Email:</b> {userData.user.email}</p>
-                {/* <button className="btn btn-primary" >
+            <div className="page-container">
+            <h1>My Account</h1>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {userData && <p><b>Email:</b> {userData.user.email}</p>}
+
+            {/* Change password button */}
+            {!showChangePassword && (
+              <button className="btn btn-primary" onClick={handleChangePassword}>
                 Change Password
-              </button> */}
+              </button>
+            )}
+
+            {/* Change password fields */}
+            {showChangePassword && (
+              <>
+                <input type="password" placeholder="Old Password" value={oldPassword} onChange={e => setOldPassword(e.target.value)} />
+                <input type="password" placeholder="New Password" value={newPassword} onChange={e => setNewPassword(e.target.value)} />
+                <button className="btn btn-primary" onClick={handleConfirmChangePassword}>
+                  Confirm Change Password
+                </button>
+              </>
+            )}
                 <button className="btn btn-primary" onClick={handleLogout}>
                   Logout
                 </button>
@@ -109,7 +161,7 @@ function MyAccountPage() {
               )}
                 
               </div>
-             
+            
             </Sidebar>
           </div>
         );
