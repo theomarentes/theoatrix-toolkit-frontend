@@ -1,6 +1,4 @@
-
-
-              import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom'; // Import useNavigate
 import Sidebar from '../components/Sidebar';
 
@@ -31,7 +29,7 @@ function MyAccountPage() {
   const handleConfirmChangePassword = async () => {
     try {
       const response = await fetch('https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/user/change-password', {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'jwt': `${token}`,
