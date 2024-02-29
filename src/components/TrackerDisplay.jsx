@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './styles/TrackerDisplay.css';
-import { useParams } from 'react-router-dom'  
+// import { useParams } from 'react-router-dom'  
 import { TrackerContext } from '../contexts/TrackerProvider';
 
 function capitalizeFirstLetter(string) {
@@ -10,7 +10,7 @@ function capitalizeFirstLetter(string) {
 
 const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     let { trackerData } = useContext(TrackerContext)
-    let { username } = useParams();
+    // let { username } = useParams();
     if (trackerData && trackerData?.data?.displayName !== "undefined" && trackerData?.data?.latestSnapshot?.data?.bosses) {
 
 
@@ -100,10 +100,9 @@ const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
             <p>Player not found, or data not found</p>
             </>
         )
-    } else if (username) {
-        return <img style={{width:"40px", display: "inline", animation:"ease-in", margin: "auto"}} src={require("../files/loading.gif")} alt="loading..."/>
-        
-    }
+    } //else if (username) {
+        //return <img style={{width:"40px", display: "inline", animation:"ease-in", margin: "auto"}} src={require("../files/loading.gif")} alt="loading..."/>
+    //}
 };
 
 export default TrackerDisplay;
