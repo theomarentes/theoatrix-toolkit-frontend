@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './styles/TrackerPage.css'
 import Sidebar from '../components/Sidebar';
 import TrackerForm from '../components/TrackerForm';
@@ -8,21 +8,20 @@ import { TrackerContext, TrackerDataProvider } from '../contexts/TrackerProvider
 
 
 const TrackerPage = () => {
-    var {trackerData} = useContext(TrackerContext);
+  const { trackerData } = useContext(TrackerContext);
+  const [loading, setLoading] = useState(false);
 
 
   return (
     <TrackerDataProvider>
-    <div class="overlay">
-          
+      <div className="overlay">
         <Sidebar>
-            <div class="page-container">
-                <TrackerForm />
-                <TrackerDisplay data={trackerData} />
-            </div>
+          <div className="page-container">
+            <TrackerForm setLoading={setLoading} /> 
+            <TrackerDisplay data={trackerData} loading={loading} /> 
+          </div>
         </Sidebar>
-        
-    </div>
+      </div>
     </TrackerDataProvider>
   );
 };

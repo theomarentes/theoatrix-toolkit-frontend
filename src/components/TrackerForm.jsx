@@ -4,11 +4,9 @@ import './styles/HomeTrackerForm.css';
 import './styles/TrackerForm.css';
 import { TrackerContext } from '../contexts/TrackerProvider';
 
-const TrackerForm = () => {
+const TrackerForm = ({ setLoading }) => { 
   const [username, setUsername] = useState('');
-
-  const [ showing, setShowing ] = useState('none');
-  let { trackerData } = useContext(TrackerContext)
+  let { trackerData } = useContext(TrackerContext);
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -16,7 +14,9 @@ const TrackerForm = () => {
   };
 
   const handleSearch = (event) => {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
+
+    setLoading(true);
     
     navigate(`/tracker/${username}`);
     if (trackerData?.data?.username !== username) {
@@ -52,11 +52,9 @@ const TrackerForm = () => {
               <button className="btn btn-primary" type="submit">
                 Search
               </button>
-              
             </div>
             
           </div>
-          <img style={{width:"40px", display: showing, animation:"ease-in", margin: "auto"}} src={require("../files/loading.gif")} alt="loading..."/>
         </form>
       </div>
     </div>

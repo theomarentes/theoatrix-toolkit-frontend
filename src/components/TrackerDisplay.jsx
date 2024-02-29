@@ -8,11 +8,14 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
+const TrackerDisplay = ({ loading, title = 'Theoatrix Toolkit' }) => { 
     let { trackerData } = useContext(TrackerContext)
     let { username } = useParams();
     if (trackerData && trackerData?.data?.displayName !== "undefined" && trackerData?.data?.latestSnapshot?.data?.bosses) {
 
+    if (loading) { 
+         return <img style={{ width: "40px", display: "inline", animation: "ease-in", margin: "auto" }} src={require("../files/loading.gif")} alt="loading..." />;
+        }
 
         return (
             <>
