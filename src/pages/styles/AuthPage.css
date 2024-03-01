@@ -27,7 +27,7 @@
   
   .content form button {
     border-color: #FFD900;
-    background-color: #FFD900; /* Light background for the button */
+    background-color: #FFD900;
 
     cursor: pointer;
   }

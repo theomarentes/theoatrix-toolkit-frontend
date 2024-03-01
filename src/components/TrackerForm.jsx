@@ -16,7 +16,7 @@ const TrackerForm = () => {
   };
 
   const handleSearch = (event) => {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
     
     navigate(`/tracker/${username}`);
     if (trackerData?.data?.username !== username) {
@@ -49,14 +49,14 @@ const TrackerForm = () => {
               onChange={handleInputChange}
             />
             <div className="input-group-append">
-              <button className="btn btn-primary" type="submit">
+              <button className="form-button" type="submit">
                 Search
               </button>
               
             </div>
             
           </div>
-          <img style={{width:"40px", display: showing, animation:"ease-in", margin: "auto"}} src={require("../files/loading.gif")} alt="loading..."/>
+          <img className="loading-icon" style={{display: showing, animation:"ease-in"}} src={require("../files/loading.gif")} alt="loading..."/>
         </form>
       </div>
     </div>

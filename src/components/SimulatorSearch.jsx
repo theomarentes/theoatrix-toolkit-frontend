@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SimulatorDisplay from './SimulatorDisplay';
-import "./styles/SimulatorSearch.css" // Adjust the import path as necessary
+import "./styles/SimulatorSearch.css" 
 
 const SimulatorSearch = () => {
   const [monsterName, setMonsterName] = useState('');

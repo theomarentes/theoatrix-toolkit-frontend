@@ -15,7 +15,7 @@ const TimeToMaxForm = () => {
   };
 
   const handleSearch = (event) => {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
     
     navigate(`/time-to-max/${username}`);
 

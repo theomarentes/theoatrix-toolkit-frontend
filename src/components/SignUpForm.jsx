@@ -1,4 +1,3 @@
-// SignUpForm.js
 import React, { useState } from 'react';
 
 function SignUpForm({ onSignUp }) {

@@ -21,10 +21,6 @@ const HomeForm = () => {
     event.preventDefault(); 
     
     navigate(`/grand-exchange/${capitalizeFirstLetter(item)}`);
-
-    
-    
-    
   };
 
 

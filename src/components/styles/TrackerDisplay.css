@@ -47,8 +47,7 @@
 .progress-bar {
   appearance: auto;
   box-sizing: border-box;
-  width: 75%;
-  color:red;
+  width: 74%;
 }
 
 .level-value{
@@ -113,14 +112,6 @@
   width: 100%;
 }
 
-
-@media (min-width: 768px) {
-  .container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-
 .icon {
   font-size: 24px;
   margin-bottom: 10px;
@@ -130,4 +121,38 @@
 .box p {
   margin: 0;
   font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1400px) {
+  .progress-bar {
+    width: 50%; 
+  }
+  .skill-name {
+    font-size: 12px;
+    width: 15%; 
+  }
+  .level-value{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .progress-bar {
+    width: 40%; 
+  }
+  .skill-name {
+    width: 15%;
+    font-size: 12px;  
+  }
+  .level-value{
+    font-size: 12px;
+  }
 }
