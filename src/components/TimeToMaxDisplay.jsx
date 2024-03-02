@@ -11,6 +11,7 @@ const TimeToMaxDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     let { trackerData } = useContext(TrackerContext)
     const url = (useLocation()).pathname
     const token = localStorage.getItem('userToken'); 
+    
    
     if (trackerData && trackerData?.data?.displayName !== "undefined" && trackerData?.data?.latestSnapshot?.data?.bosses) {
         console.log(trackerData)
