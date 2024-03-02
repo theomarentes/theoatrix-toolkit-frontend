@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import "./styles/GrandExchangeDisplay.css"
 import "./styles/AllPages.css"
+import FavouriteButton from './FavouriteButton';
 
 const ItemDetails = () => {
   const [itemData, setItemData] = useState([]);
@@ -11,7 +12,8 @@ const ItemDetails = () => {
   const [topData, setTopData] = useState(null);
   
   const { item } = useParams();
-  
+  const url = (useLocation()).pathname
+    const token = localStorage.getItem('userToken'); 
   const checkImage = async (url) => {
     try {
       const response = await fetch(url);
@@ -116,6 +118,7 @@ const ItemDetails = () => {
 if ((itemData).length > 0) {
   return (
     <div>
+      <FavouriteButton url={url} token={token} />
       {itemData.map((item, index) => (
         <div className="item-details-container" key={index}>
           <div className="searched-item" style={{ backgroundImage: `url(${backgroundImageUrls[index]})` }}>

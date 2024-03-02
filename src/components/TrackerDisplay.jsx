@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import './styles/TrackerDisplay.css';
 // import { useParams } from 'react-router-dom'  
 import { TrackerContext } from '../contexts/TrackerProvider';
+import FavouriteButton from './FavouriteButton';
+import { useLocation } from 'react-router-dom';
 
 function capitalizeFirstLetter(string) {
     if (!string) return '';
@@ -10,13 +12,16 @@ function capitalizeFirstLetter(string) {
 
 const TrackerDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     let { trackerData } = useContext(TrackerContext)
-    // let { username } = useParams();
+    const url = (useLocation()).pathname
+    const token = localStorage.getItem('userToken'); 
+    // let { username } = useParams(); 
     if (trackerData && trackerData?.data?.displayName !== "undefined" && trackerData?.data?.latestSnapshot?.data?.bosses) {
 
 
         return (
             <>
-
+                
+                <FavouriteButton url={url} token={token} />
                 <h1>{trackerData.data.displayName}</h1>
                 <h3>{capitalizeFirstLetter(trackerData.data.type)}</h3>
                 <div class="container">
