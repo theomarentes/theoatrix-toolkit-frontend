@@ -19,7 +19,7 @@ const TimeToMaxDisplay = ({ title = 'Theoatrix Toolkit' }) => {
         return (
             <>
             <FavouriteButton url={url} token={token} />
-                <h1>{trackerData.data.displayName}</h1>
+                <h1>{trackerData?.data?.displayName}</h1>
                 <div class="container">
 
                     <div class="box">
