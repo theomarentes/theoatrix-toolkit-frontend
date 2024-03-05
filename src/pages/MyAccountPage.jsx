@@ -53,7 +53,6 @@ function MyAccountPage() {
 
   const handleRemoveFavourite = async (urlToRemove) => {
     const token = localStorage.getItem('userToken');
-    // Assume you have an endpoint /remove-favourite to handle the removal
     try {
       const response = await fetch('https://theoatrix-toolkit-backend-139a9c3c7d4b.herokuapp.com/user/remove-favourite', {
         method: 'POST',
