@@ -6,7 +6,7 @@ import FavouriteButton from './FavouriteButton';
 import { useLocation } from 'react-router-dom';
 
 
-
+// TimeToMaxDisplay Component: Displays data related to time to max
 const TimeToMaxDisplay = ({ title = 'Theoatrix Toolkit' }) => {
     let { trackerData } = useContext(TrackerContext)
     const url = (useLocation()).pathname

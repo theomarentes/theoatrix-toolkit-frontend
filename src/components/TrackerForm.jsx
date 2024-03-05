@@ -4,6 +4,7 @@ import './styles/HomeTrackerForm.css';
 import './styles/TrackerForm.css';
 import { TrackerContext } from '../contexts/TrackerProvider';
 
+// TrackerForm Component: Manages the form for user tracking.
 const TrackerForm = () => {
   const [username, setUsername] = useState('');
 
@@ -11,10 +12,12 @@ const TrackerForm = () => {
   let { trackerData } = useContext(TrackerContext)
   const navigate = useNavigate();
 
+// handleInputChange Function: Updates username state on input field changes.
   const handleInputChange = (event) => {
     setUsername(event.target.value);
   };
 
+// handleSearch Function: Triggers search on username input.
   const handleSearch = (event) => {
     event.preventDefault();
     

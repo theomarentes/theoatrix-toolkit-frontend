@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import SimulatorDisplay from './SimulatorDisplay';
 import "./styles/SimulatorSearch.css" 
 
+// SimulatorSearch Component: Manages search input fields and handles search.
 const SimulatorSearch = () => {
   const [monsterName, setMonsterName] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuantity,setSearchQuantity] = useState(100);
   const [quantity, setQuantity] = useState('');
 
+// handleInputChange Function: Updates searchTerm state on input field changes.
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
+// handleInputChange2 Function: Updates searchQuantity state on input field changes.
   const handleInputChange2 = (event) => {
     setSearchQuantity(event.target.value);
   };
 
+// handleSearch Function: Triggers search on input values.
   const handleSearch = (event) => {
     event.preventDefault();
     setMonsterName(searchTerm);

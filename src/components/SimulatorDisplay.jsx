@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./styles/Simulator.css"
 
+// SimulatorDisplay Component: Displays monster data and loot for simulation.
 const SimulatorDisplay = ({ monsterName, quantity }) => {
   const [monsterData, setMonsterData] = useState(null);
   const [loot, setLoot] = useState(null);
@@ -21,6 +22,7 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
       });
   };
 
+// checkImage: Function to check if an image URL is valid.
   const getBackgroundImageUrl = (name, id) => {
     
     if (checkImage(`https://oldschool.runescape.wiki/images/${name.replaceAll(" ", "_")}.png`) !== false) {
@@ -34,15 +36,17 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
 
   };
 
-
+// simulateDrops Function: Simulates drops based on provided drop data and kill count.
   function simulateDrops(drops, killCount) {
     let results = {};
-
+    // Loop through each drop
     for (let i = 0; i < killCount; i++) {
       drops.forEach(drop => {
+        // Roll for each drop's rarity
         for (let j = 0; j < drop.rolls; j++) {
           if (Math.random() <= drop.rarity) {
             let quantity = 0;
+            // Calculate quantity based on provided value
             if (typeof drop.quantity === 'string' && drop.quantity.includes('-')) {
               let [min, max] = drop.quantity.split('-').map(Number);
               quantity = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -50,6 +54,7 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
               quantity = parseInt(drop.quantity, 10);
             }
 
+            // Update results object with the drop's information
             if (results[drop.id]) {
               results[drop.id].quantity += quantity;
             } else {
@@ -63,10 +68,11 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
         }
       });
     }
-
     return results;
   }
 
+// useEffect Hook: Fetches monster data when monsterName changes.
+// useEffect Hook: Calculates loot when monsterData and quantity change.
   useEffect(() => {
     const fetchMonsterData = async () => {
       try {
@@ -84,19 +90,20 @@ const SimulatorDisplay = ({ monsterName, quantity }) => {
         setLoading(false)
       }
     };
-
+// Call fetchMonsterData when monsterName changes
     if (monsterName) {
       fetchMonsterData();
     }
     
   }, [monsterName]);
 
+  // Check if monsterData and quantity are available and calculate loot
   useEffect(() => {
     if (monsterData?.monster?.drops && quantity) {
       setLoot(simulateDrops(monsterData.monster.drops, quantity));
     }
   }, [monsterData, quantity]);
-
+// Render error message if error is present
   if (error) {
     return <div>Error: {error}</div>;
   }

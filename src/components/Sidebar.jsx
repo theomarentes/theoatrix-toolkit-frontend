@@ -8,6 +8,7 @@ const Sidebar = ({ children }) => {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
 
+// Checking if current path with regex to be able to highlight what page youre on in sidebar
   const getCurrentPath = () => {
     return window.location.pathname + window.location.search;
   };

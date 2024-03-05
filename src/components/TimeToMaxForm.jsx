@@ -10,13 +10,14 @@ const TimeToMaxForm = () => {
   let { trackerData } = useContext(TrackerContext)
   const navigate = useNavigate();
 
+// handleInputChange Function: Updates username state on input field changes.
   const handleInputChange = (event) => {
     setUsername(event.target.value);
   };
 
+// handleSearch Function: Triggers search based on username input.
   const handleSearch = (event) => {
     event.preventDefault(); 
-    
     navigate(`/time-to-max/${username}`);
 
     if (trackerData?.data?.username !== username) {

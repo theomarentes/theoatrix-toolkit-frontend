@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// SignUpForm Component: Handles user sign-up form submission.
 function SignUpForm({ onSignUp }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
