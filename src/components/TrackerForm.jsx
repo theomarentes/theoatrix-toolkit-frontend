@@ -8,7 +8,7 @@ import { TrackerContext } from '../contexts/TrackerProvider';
 const TrackerForm = () => {
   const [username, setUsername] = useState('');
 
-  const [ showing, setShowing ] = useState('none');
+  const [ showing, setShowing ] = useState('inline');
   let { trackerData } = useContext(TrackerContext)
   const navigate = useNavigate();
 
@@ -31,10 +31,17 @@ const TrackerForm = () => {
   };
   useEffect(() => {
 
-      setShowing("none");
       
+      setShowing("none");
 
   }, [trackerData])
+
+  useEffect(() => {
+
+      
+    setShowing("inline");
+
+}, [])
 
 
   return (
@@ -59,7 +66,7 @@ const TrackerForm = () => {
             </div>
             
           </div>
-          <img className="loading-icon" style={{display: showing, animation:"ease-in"}} src={require("../files/loading.gif")} alt="loading..."/>
+          <img className="loading-icon" style={{display: showing}} src={require("../files/loading.gif")} alt="loading..."/>
         </form>
       </div>
     </div>

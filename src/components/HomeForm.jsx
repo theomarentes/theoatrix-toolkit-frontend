@@ -7,7 +7,6 @@ import "./styles/HomeForm.css"
 
 const HomeForm = () => {
   const [username, setUsername] = useState('');
-
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
